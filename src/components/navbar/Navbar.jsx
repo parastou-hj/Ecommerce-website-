@@ -20,7 +20,7 @@ const hideDropdown = e => {
     setShow(false);
 }
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="nav-bar bg-body-tertiary">
       <Container fluid>
         <Navbar.Brand href="#">
           <img src={logo} alt="" style={{height:"40px"}} />
@@ -29,27 +29,28 @@ const hideDropdown = e => {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
-            className="me-auto my-2 my-lg-0"
+            className="nav my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
+            <Nav.Link href="./" className='menu'>Home</Nav.Link>
             <NavDropdown title="Products" 
               id="collasible-nav-dropdown" 
               show={show}
             onMouseEnter={showDropdown} 
             onMouseLeave={hideDropdown}
-            caret={false} >
-              <NavDropdown.Item href="#action3">Women</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
+            caret={false}
+            className='menu' >
+              <NavDropdown.Item href="./women">Women</NavDropdown.Item>
+              <NavDropdown.Item href="men">
                 Men
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action5">
-                Children
+              <NavDropdown.Item href="kids">
+                kids
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#action2">About</Nav.Link>
-            <Nav.Link href="#" >
+            <Nav.Link href="#action2" className='menu'>About</Nav.Link>
+            <Nav.Link href="#" className='menu'>
               Magazin
             </Nav.Link>
           </Nav>
@@ -57,12 +58,12 @@ const hideDropdown = e => {
             <Form.Control
               type="search"
               placeholder="Search"
-              className="me-2"
+              className=" search"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
+           
           </Form>
-          <div className="signin d-flex justify-content-between ms-5">
+          <div className="signin d-flex justify-content-between ms-4">
             <img src={user} alt="" style={{height:"40px"}} />
             <img src={cart} alt="" style={{height:"40px"}} />
           </div>
