@@ -1,0 +1,15 @@
+.form{
+    margin-right: 10%;
+    width: 40%;
+}
+.signin{
+    margin-right: 5%;
+}
+.signin .account{
+    border: 1px solid rgb(164, 160, 160);
+    padding: 10px;
+    border-radius: 5px;
+}
+.dropdown-toggle::after {
+    display: none !important; 
+  }
