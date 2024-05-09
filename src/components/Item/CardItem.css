@@ -1,0 +1,28 @@
+.item{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+.item img{
+    max-width:300px;
+
+}
+.item:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+.item button{
+    border: none;
+    outline: 0;
+    padding: 10px;
+    color: white;
+    background-color: #9f4c4c;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+.item button:hover{
+    background-color: #904242;
+}
