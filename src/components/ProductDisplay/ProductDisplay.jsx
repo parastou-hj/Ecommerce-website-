@@ -3,6 +3,8 @@ import '../ProductDisplay/productDisplay.css'
 import P1_product_i1 from "../assets/p1_product_i1.png";
 import star_icon from '../assets/star_icon.png'
 import star_dull_icon from '../assets/star_dull_icon.png'
+import { Breadcrumb } from "react-bootstrap";
+import BreadCrumb from "../Breadcrumb/Breadcrumb";
 
 const ProductDisplay = (props) => {
   const productShown = props.product;
@@ -10,6 +12,7 @@ const ProductDisplay = (props) => {
 
   return (
     <div>
+      <BreadCrumb product={productShown}/>
       <div className="product-display">
         <div className="display-image">
           <div className="other-images ">

@@ -33,7 +33,7 @@ const hideDropdown = e => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="./" className='menu'>Home</Nav.Link>
+            <Nav.Link href="/" className='menu'>Home</Nav.Link>
             <NavDropdown title="Products" 
               id="collasible-nav-dropdown" 
               show={show}
@@ -41,16 +41,16 @@ const hideDropdown = e => {
             onMouseLeave={hideDropdown}
             caret={false}
             className='menu' >
-              <NavDropdown.Item href="./women">Women</NavDropdown.Item>
-              <NavDropdown.Item href="men">
+              <NavDropdown.Item href="/women">Women</NavDropdown.Item>
+              <NavDropdown.Item href="/men">
                 Men
               </NavDropdown.Item>
-              <NavDropdown.Item href="kids">
+              <NavDropdown.Item href="/kids">
                 kids
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#action2" className='menu'>About</Nav.Link>
-            <Nav.Link href="#" className='menu'>
+            <Nav.Link href="/about" className='menu'>About</Nav.Link>
+            <Nav.Link href="/magazin" className='menu'>
               Magazin
             </Nav.Link>
           </Nav>
