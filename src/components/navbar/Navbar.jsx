@@ -45,7 +45,7 @@ const hideDropdown = e => {
               <NavDropdown.Item href="/men">
                 Men
               </NavDropdown.Item>
-              <NavDropdown.Item href="/kids">
+              <NavDropdown.Item href="/kid">
                 kids
               </NavDropdown.Item>
             </NavDropdown>

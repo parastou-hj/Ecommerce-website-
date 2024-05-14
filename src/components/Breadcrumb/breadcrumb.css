@@ -1,3 +1,7 @@
-.bread-item{
+.breadcrumb-item a{
+    color:#6c757d;
     text-decoration: none !important;
+}
+.breadcrumb-item a:hover{
+    color: black;
 }
