@@ -13,7 +13,7 @@ const Popular = () => {
       <div className="row ">
       {product.map((i,index)=>{
         return(<>
-        <Item product={product} id={i.id} name={i.name} image={i.image} old_price={i.old_price} price={i.price} />
+        <Item product={product} id={i.id} name={i.name} image={i.image} price={i.price} />
         
         </>)
 

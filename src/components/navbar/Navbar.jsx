@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../navbar/Navbar.css'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -10,8 +10,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../assets/logo.png'
 import cart from '../assets/cart.png'
 import user from '../assets/user.png'
+import { Link } from 'react-router-dom';
+import { CartContext } from '../../Context/CartContext';
+import { NavLink } from 'react-bootstrap';
 
 function HeaderNavbar() {
+  const cartContext=useContext(CartContext);
+  const cartNumber= cartContext.cartItemsNumber
   const [show, setShow] = useState(false);
 const showDropdown = (e)=>{
     setShow(!show);
@@ -22,7 +27,7 @@ const hideDropdown = e => {
   return (
     <Navbar expand="lg" className="nav-bar bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="#">
+        <Navbar.Brand >
           <img src={logo} alt="" style={{height:"40px"}} />
           <span className='fw-bold fs-'>PariShop</span>
         </Navbar.Brand>
@@ -33,7 +38,7 @@ const hideDropdown = e => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/" className='menu'>Home</Nav.Link>
+            <Nav.Link><Link to='/'  className='menu'>Home</Link></Nav.Link>
             <NavDropdown title="Products" 
               id="collasible-nav-dropdown" 
               show={show}
@@ -41,17 +46,17 @@ const hideDropdown = e => {
             onMouseLeave={hideDropdown}
             caret={false}
             className='menu' >
-              <NavDropdown.Item href="/women">Women</NavDropdown.Item>
-              <NavDropdown.Item href="/men">
-                Men
+              <NavDropdown.Item ><Link to='/women'>women</Link></NavDropdown.Item>
+              <NavDropdown.Item >
+              <Link to='/men'>men</Link>
               </NavDropdown.Item>
-              <NavDropdown.Item href="/kid">
-                kids
+              <NavDropdown.Item >
+              <Link to='/kid'>kids</Link>
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/about" className='menu'>About</Nav.Link>
-            <Nav.Link href="/magazin" className='menu'>
-              Magazin
+            <Nav.Link className='menu'>  <Link to='/about'>About</Link></Nav.Link>
+            <Nav.Link className='menu'>
+            <Link to='/magazin'>Magazin</Link>
             </Nav.Link>
           </Nav>
           <Form className="d-flex form">
@@ -64,8 +69,11 @@ const hideDropdown = e => {
            
           </Form>
           <div className="signin d-flex justify-content-between ms-4">
-            <img src={user} alt="" style={{height:"40px"}} />
-            <img src={cart} alt="" style={{height:"40px"}} />
+            <div><img src={user} alt="" style={{height:"40px"}} /></div>
+            <div className="cart">
+              {cartNumber<=0?<></>: <div className="cart-number text-center"><span className='p-1' >{cartNumber}</span></div>}
+              <div><Link to='/cart'><img src={cart} alt="" style={{height:"40px"}} /></Link></div>
+            </div>
           </div>
         </Navbar.Collapse>
       </Container>

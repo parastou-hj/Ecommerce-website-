@@ -5,8 +5,8 @@
     
 }
 .item img{
-    max-width:250px;
-    max-height: 250px;
+    max-width:300px;
+    max-height: 300px;
 
 }
 .item p{
@@ -14,6 +14,7 @@
 }
 .item-price-old{
     color: gray;
+    text-decoration: line-through;
 }
 .item:hover{
     transform: scale(1.05);

@@ -1,0 +1,32 @@
+.cart-item{
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 15px;
+}
+.p-image{
+    height: 150px;
+    width: 150px;
+}
+.num-price{
+  display: flex;
+  justify-content: space-between;
+}
+.num{
+    color:#e74c3c;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 150px;
+    border: 1px solid #95a5a6;
+    font-size: 20px;
+    border-radius: 10px;
+   
+}
+
+.num button{
+    color:#e74c3c;
+    font-size: 20px;
+   border: none;
+   background-color: white;
+   border-radius: 10px;
+   padding: 5px;
+}

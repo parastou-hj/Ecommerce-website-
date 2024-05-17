@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import '../ProductDisplay/productDisplay.css'
 import P1_product_i1 from "../assets/p1_product_i1.png";
 import star_icon from '../assets/star_icon.png'
 import star_dull_icon from '../assets/star_dull_icon.png'
 import { Breadcrumb } from "react-bootstrap";
 import BreadCrumb from "../Breadcrumb/Breadcrumb";
+import { CartContext } from "../../Context/CartContext";
 
-const ProductDisplay = (props) => {
-  const productShown = props.product;
-  console.log(productShown);
+const ProductDisplay = ({product}) => {
+  const productShown = product;
+  const cartContext= useContext(CartContext);
+  const cartItems=cartContext.cartItems;
+  const addedToCart= cartItems.find(item=>item.id===productShown.id);
+  const cartNumber=cartContext.cartItemsNumber;
+ 
 
   return (
     <div>
@@ -52,10 +57,24 @@ const ProductDisplay = (props) => {
                 <div>XL</div>
             </div>
            </div>
+           {addedToCart&&addedToCart.quantity>0? <div className='num '>
+                 <button onClick={decFromCart}>-</button>
+                 <span className='text-center p-1'>{addedToCart.quantity}</span>
+                 <button onClick={addToCart}>+</button>
+             </div> :<button onClick={addToCart}>Add to Cart</button> }
+            
+          
         </div>
       </div>
     </div>
   );
+ function addToCart(){
+  cartContext.inCart(productShown)
+ }
+ function decFromCart(){
+  cartContext.decCart(productShown)
+ }
+  
 };
 
 export default ProductDisplay;
