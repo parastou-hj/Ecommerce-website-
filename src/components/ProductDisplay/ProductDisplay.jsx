@@ -6,6 +6,8 @@ import star_dull_icon from '../assets/star_dull_icon.png'
 import { Breadcrumb } from "react-bootstrap";
 import BreadCrumb from "../Breadcrumb/Breadcrumb";
 import { CartContext } from "../../Context/CartContext";
+import recycle_bin from '../assets/recycle_bin.png'
+
 
 const ProductDisplay = ({product}) => {
   const productShown = product;
@@ -58,10 +60,11 @@ const ProductDisplay = ({product}) => {
             </div>
            </div>
            {addedToCart&&addedToCart.quantity>0? <div className='num '>
-                 <button onClick={decFromCart}>-</button>
+           {addedToCart.quantity===1?<img onClick={decFromCart} src={recycle_bin} style={{height:"40px"}} className='p-2'/>
+                : <button onClick={decFromCart} className=''>-</button>}
                  <span className='text-center p-1'>{addedToCart.quantity}</span>
                  <button onClick={addToCart}>+</button>
-             </div> :<button onClick={addToCart}>Add to Cart</button> }
+             </div> :<button className="add-to-cart" onClick={addToCart}>Add to Cart</button> }
             
           
         </div>
