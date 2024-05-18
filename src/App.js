@@ -12,6 +12,7 @@ import banner_kids from './components/assets/banner_kids.png'
 import { useState } from 'react';
 import { CartContext } from './Context/CartContext';
 import Cart from './components/Cart/Cart';
+import Login from './components/Login/Login';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/product:productId" element={<Product/>}  />
         </Route>
         <Route path='/cart' element={<Cart/>} />
+        <Route path='/login' element={<Login/>} />
       </Routes>
       </BrowserRouter>
     </div>

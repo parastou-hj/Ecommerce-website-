@@ -3,6 +3,7 @@ import { CartContext } from '../../Context/CartContext';
 import remove_icon from '../assets/remove_icon.png'
 import '../Cart/cartList.css'
 import recycle_bin from '../assets/recycle_bin.png'
+import { Link } from 'react-router-dom';
 
 const CartList = ({addedItem}) => {
   const cartContext= useContext(CartContext);
@@ -12,7 +13,7 @@ const CartList = ({addedItem}) => {
   <>
    <div className='cart-item d-flex flex-column m-2 ' >
          <div className="img-name d-flex ">
-             <img className='p-image' src={item.image} />
+             <Link to={`/product/${item.id}`}><img className='p-image' src={item.image} /></Link>
              <span className='p-2 mt-5'>{item.name}</span> 
          </div>
          <div className='num-price'>

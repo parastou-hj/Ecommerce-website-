@@ -11,10 +11,10 @@ const ProductCategory = (props) => {
       <img src={props.banner} alt="" />
       <div className="container justify-content-center p-5">
      <div className='row'>
-     {products.map((i,index)=>{
+     {products.map((i)=>{
         if(i.category===props.category){
             return(<>
-                    <Item product={products} id={i.id} name={i.name} image={i.image} old_price={i.old_price} price={i.price} />
+                    <Item key={i.id} product={products} id={i.id} name={i.name} image={i.image} old_price={i.old_price} price={i.price} />
 
             </>)
         }

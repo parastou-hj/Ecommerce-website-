@@ -11,10 +11,9 @@ const Popular = () => {
       <hr style={{width:"150px", height:"2px"}}/>
       <div className="container justify-content-center p-3">
       <div className="row ">
-      {product.map((i,index)=>{
+      {product.map((i)=>{
         return(<>
-        <Item product={product} id={i.id} name={i.name} image={i.image} price={i.price} />
-        
+        <Item key={i.id} product={product} id={i.id} name={i.name} image={i.image} price={i.price} />
         </>)
 
       })}

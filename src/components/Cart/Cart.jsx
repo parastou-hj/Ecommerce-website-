@@ -18,7 +18,7 @@ const Cart = () => {
         {cartItemsNumber===0?<div className='empty col-lg-8 col-md-12" m-2'>
          <span> your cart is empty!</span>
         </div>:<>{cartItems.map(item=>{return(<>
-          <CartList addedItem={item} />
+          <CartList addedItem={item} key={item.id}/>
         
         </>)}
         )}</> }

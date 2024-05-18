@@ -44,7 +44,7 @@ const hideDropdown = e => {
               show={show}
             onMouseEnter={showDropdown} 
             onMouseLeave={hideDropdown}
-            caret={false}
+            caret='false'
             className='menu' >
               <NavDropdown.Item ><Link to='/women'>women</Link></NavDropdown.Item>
               <NavDropdown.Item >
@@ -69,7 +69,7 @@ const hideDropdown = e => {
            
           </Form>
           <div className="signin d-flex justify-content-between ms-4">
-            <div><img src={user} alt="" style={{height:"40px"}} /></div>
+            <div><Link to='/login'><img src={user} alt="" style={{height:"40px"}} /></Link></div>
             <div className="cart">
               {cartNumber<=0?<></>: <div className="cart-number text-center"><span className='p-1' >{cartNumber}</span></div>}
               <div><Link to='/cart'><img src={cart} alt="" style={{height:"40px"}} /></Link></div>
