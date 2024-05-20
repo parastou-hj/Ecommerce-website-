@@ -48,19 +48,19 @@ const Login = () => {
         <form className='p-3'>
             <div className="mb-2">
                 <label for="InputEmail" className="form-label">Username</label>
-                <input type="email" className="form-control inputs" id="InputEmail" aria-describedby="emailHelp"/>
+                <input type="email" className="form-control inputs" id="InputEmail" placeholder='usename'  />
             </div>
             <div className="mb-2">
                 <label for="InputEmail1" className="form-label">Email</label>
-                <input type="email" className="form-control inputs" id="InputEmail1" aria-describedby="emailHelp"/>
+                <input type="email" className="form-control inputs" id="InputEmail1" placeholder='email' />
             </div>
             <div className="mb-2">
                 <label for="InputPassword1" class="form-label">Password</label>
-                <input type="password" className="form-control inputs" id="InputPassword1"/>
+                <input type="password" className="form-control inputs" id="InputPassword1" placeholder='password'/>
             </div>
             <div className="mb-2">
                 <label for="InputPassword" class="form-label">Confirm Password</label>
-                <input type="password" className="form-control inputs" id="InputPassword"/>
+                <input type="password" className="form-control inputs" id="InputPassword" placeholder='confirm password'/>
             </div>
             <div class="mb-2 form-check">
                 <input type="checkbox" className="form-check-input" id="Check1"/>

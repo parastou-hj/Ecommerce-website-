@@ -13,9 +13,25 @@
 .form{
     margin-left: 25%;
     width: 30%;
+    position: relative;
 }
 .search{
     border-radius: 20px;
+    width: 100%;
+
+}
+.search:focus{
+    border: none;
+    outline: none !important;
+}
+
+.search-btn{
+    position: absolute; 
+    right: 20px;
+    top: 50%; 
+    transform: translateY(-50%); 
+    font-size: 1.2em; 
+    cursor: pointer;
 }
 .signin{
     margin-right:20px;

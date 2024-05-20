@@ -12,11 +12,14 @@ import cart from '../assets/cart.png'
 import user from '../assets/user.png'
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
-import { NavLink } from 'react-bootstrap';
+import search_icon from '../assets/search_icon.png'
+
 
 function HeaderNavbar() {
   const cartContext=useContext(CartContext);
-  const cartNumber= cartContext.cartItemsNumber
+  const cartNumber= cartContext.cartItemsNumber;
+  const [search,setSearch]=useState('');
+  console.log(search)
   const [show, setShow] = useState(false);
 const showDropdown = (e)=>{
     setShow(!show);
@@ -65,8 +68,9 @@ const hideDropdown = e => {
               placeholder="Search"
               className=" search"
               aria-label="Search"
+              onChange={(e)=>setSearch(e.target.value)}
             />
-           
+          <Link to={search}><img className='search-btn' src={search_icon} style={{height:'20px',width:'20px'}} /></Link>
           </Form>
           <div className="signin d-flex justify-content-between ms-4">
             <div><Link to='/login'><img src={user} alt="" style={{height:"40px"}} /></Link></div>
