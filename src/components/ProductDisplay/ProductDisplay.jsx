@@ -11,6 +11,7 @@ import recycle_bin from '../assets/recycle_bin.png'
 
 const ProductDisplay = ({product}) => {
   const productShown = product;
+  console.log(product)
   const cartContext= useContext(CartContext);
   const cartItems=cartContext.cartItems;
   const addedToCart= cartItems.find(item=>item.id===productShown.id);

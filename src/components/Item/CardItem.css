@@ -2,10 +2,11 @@
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
     margin: auto;
     text-align: center;
+    width: min-content;
     
 }
 .item img{
-    max-width:350px;
+    width:300px;
     max-height: 350px;
 
 }

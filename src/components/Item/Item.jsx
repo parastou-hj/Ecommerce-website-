@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
  const Item = (props) => {
   return (
-    <div className='col-lg-3 col-md-4 bg-white cards pt-2 mt-4  '>
+    <div className='col-lg-3 col-md-4 bg-white cards '>
       <div className=' item '>
       <Link to={`/product/${props.id}`}><img onClick={window.scrollTo(0,0)} src={props.image} alt="" /></Link>
       <p className='p-1 ms-1'>{props.name}</p>
