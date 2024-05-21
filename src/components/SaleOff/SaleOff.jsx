@@ -23,7 +23,7 @@ const SaleOff = () => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
+          infinite: false,
           dots: true
         }
       },
@@ -45,12 +45,11 @@ const SaleOff = () => {
     ]
   };
   return (
-   <div className=" off bg-danger py-3 px-1 m-2">
+   <div className=" off bg-danger p-4 mx-2">
      <div className="slider-container ">
+     
       <Slider {...settings}>
-        <div>
-          <img src={off} alt="" />
-        </div>
+      <img src={off} alt="" />
      {offProduct.map((item,index)=>{return(
      <SliderItem key={item.id} id={item.id} image={item.image} name={item.name} old_price={item.old_price} price={item.price} />
      )}

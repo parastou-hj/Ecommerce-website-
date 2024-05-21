@@ -3,4 +3,10 @@
 }
 .off{
     border-radius: 25px;
+    text-align: center;
+}
+.off img{
+    height: 150px;
+    width: 150px;
+    margin: auto;
 }
