@@ -31,9 +31,7 @@ function App() {
     }}>
       <div className="App">
       <BrowserRouter>
-      <header>
       <HeaderNavbar/>
-      </header>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path='/women' element={<ProductCategory category='women' banner={banner_women} />} />

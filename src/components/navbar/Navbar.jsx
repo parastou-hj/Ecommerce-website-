@@ -13,6 +13,8 @@ import user from '../assets/user.png'
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
 import search_icon from '../assets/search_icon.png'
+import { FaUser } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 function HeaderNavbar() {
@@ -28,16 +30,38 @@ const hideDropdown = e => {
     setShow(false);
 }
   return (
-    <Navbar expand="lg" className="nav-bar bg-body-tertiary">
+   <>
+     <header className='d-flex justify-content-between pt-3'>
+        <div className="logo-search d-flex ms-4">
+        <span className='fw-bold fs-'>PariShop</span>
+       <Form className="form ms-2">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className=" search"
+              aria-label="Search"
+              onChange={(e)=>setSearch(e.target.value)}
+            />
+          <Link to={search}><img className='search-btn' src={search_icon} style={{height:'20px',width:'20px'}} /></Link>
+       </Form>
+        </div>
+          <div className="signin d-flex">
+            <div className=''><Link to='/login'><FontAwesomeIcon icon={FaUser}/>
+            <span>Login | Signup</span>
+            </Link></div>
+            <div className="cart">
+              {cartNumber<=0?<></>: <div className="cart-number text-center"><span className='p-1' >{cartNumber}</span></div>}
+              <div><Link to='/cart'><img src={cart} alt="" style={{height:"40px"}} /></Link></div>
+            </div>
+          </div>
+     </header>
+     <main>
+     <Navbar className="nav-bar bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand >
-          <img src={logo} alt="" style={{height:"40px"}} />
-          <span className='fw-bold fs-'>PariShop</span>
-        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
-            className="nav my-2 my-lg-0"
+            className="nav"
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
@@ -62,26 +86,12 @@ const hideDropdown = e => {
             <Link to='/magazin'>Magazin</Link>
             </Nav.Link>
           </Nav>
-          <Form className="d-flex form">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className=" search"
-              aria-label="Search"
-              onChange={(e)=>setSearch(e.target.value)}
-            />
-          <Link to={search}><img className='search-btn' src={search_icon} style={{height:'20px',width:'20px'}} /></Link>
-          </Form>
-          <div className="signin d-flex justify-content-between ms-4">
-            <div><Link to='/login'><img src={user} alt="" style={{height:"40px"}} /></Link></div>
-            <div className="cart">
-              {cartNumber<=0?<></>: <div className="cart-number text-center"><span className='p-1' >{cartNumber}</span></div>}
-              <div><Link to='/cart'><img src={cart} alt="" style={{height:"40px"}} /></Link></div>
-            </div>
-          </div>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>
+     </main>
+   </>
   );
 }
 

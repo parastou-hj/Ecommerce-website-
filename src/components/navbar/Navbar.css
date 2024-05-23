@@ -1,3 +1,7 @@
+.logo-search span{
+    font-size: 25px;
+    color: #ff6b6b;
+}
 .nav-bar{
     
 }
@@ -5,24 +9,28 @@
     text-decoration: none;
     color: rgb(131, 129, 129);
     
+    
 }
-.nav{
-    margin-left: 10%;
+main{
+    width: 100%;
+    border-bottom: 1px solid transparent; 
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
 .form{
-    margin-left: 25%;
-    width: 30%;
+    width: 600px;
     position: relative;
 }
-.search{
-    border-radius: 20px;
-    width: 100%;
-
+.form-control:focus{
+    box-shadow: none;
+    background-color: rgb(241, 242, 241);
+    border: 1px solid #8395a7;
 }
-.search:focus{
-    border: none;
-    outline: none !important;
+.search{
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgb(241, 242, 241);
+
 }
 
 .search-btn{
@@ -59,4 +67,8 @@
     right: -6px;
     color: aliceblue;
     
+}
+hr{
+    border: 1px solid transparent; 
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
