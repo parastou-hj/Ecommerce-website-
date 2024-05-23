@@ -1,20 +1,18 @@
 import React, { useContext } from 'react';
 import '../navbar/Navbar.css'
+import '../navbar/responsiveNav.css'
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import logo from '../assets/logo.png'
 import cart from '../assets/cart.png'
-import user from '../assets/user.png'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
-import search_icon from '../assets/search_icon.png'
-import { FaUser } from 'react-icons/fa';
+import search_icon from '../assets/search_icon.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaRightToBracket } from 'react-icons/fa6';
 
 
 function HeaderNavbar() {
@@ -33,7 +31,7 @@ const hideDropdown = e => {
    <>
      <header className='d-flex justify-content-between pt-3'>
         <div className="logo-search d-flex ms-4">
-        <span className='fw-bold fs-'>PariShop</span>
+        <span className='logo fw-bold fs-3'>PariShop</span>
        <Form className="form ms-2">
             <Form.Control
               type="search"
@@ -45,11 +43,14 @@ const hideDropdown = e => {
           <Link to={search}><img className='search-btn' src={search_icon} style={{height:'20px',width:'20px'}} /></Link>
        </Form>
         </div>
-          <div className="signin d-flex">
-            <div className=''><Link to='/login'><FontAwesomeIcon icon={FaUser}/>
-            <span>Login | Signup</span>
-            </Link></div>
-            <div className="cart">
+          <div className="signin-cart d-flex">
+            <div className='account'>
+                <Link to='/login'>
+                    <FontAwesomeIcon icon={FaRightToBracket}/>
+                    <span className='fs-6'>Login | Signup</span>
+                </Link>
+            </div>
+            <div className="cart ms-3">
               {cartNumber<=0?<></>: <div className="cart-number text-center"><span className='p-1' >{cartNumber}</span></div>}
               <div><Link to='/cart'><img src={cart} alt="" style={{height:"40px"}} /></Link></div>
             </div>
@@ -65,6 +66,7 @@ const hideDropdown = e => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
+          
             <Nav.Link><Link to='/'  className='menu'>Home</Link></Nav.Link>
             <NavDropdown title="Products" 
               id="collasible-nav-dropdown" 

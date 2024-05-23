@@ -1,0 +1,22 @@
+@media (max-width: 1024px){
+    .signin-cart .account{
+       display: none;
+    }
+    .signin-cart .cart{
+        display: none;
+    }
+    .logo-search{
+        width: 100%;
+    }
+    .form{
+      width: 100%;
+    }
+    .nav-bar{
+        display: none;
+    }
+    header{
+        display: inline;
+        padding: 10px;
+    }
+    
+}

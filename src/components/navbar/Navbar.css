@@ -1,6 +1,65 @@
 .logo-search span{
-    font-size: 25px;
     color: #ff6b6b;
+}
+
+
+.form{
+    width: 600px;
+    position: relative;
+}
+.form-control:focus{
+    box-shadow: none;
+    background-color: rgb(241, 242, 241);
+    border: 1px solid #8395a7;
+}
+.search{
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgb(241, 242, 241);
+
+}
+
+.search-btn{
+    position: absolute; 
+    right: 20px;
+    top: 50%; 
+    transform: translateY(-50%); 
+    font-size: 1.2em; 
+    cursor: pointer;
+}
+.signin-cart{
+    margin-right:25px;
+    align-items: center;
+   
+}
+.signin-cart a{
+    text-decoration: none;
+    color: #5a5f63;
+}
+.signin-cart .account{
+    border: 1px solid rgb(207, 205, 205);
+    padding: 5px;
+    border-radius: 5px;
+}
+.signin-cart .account span{
+    padding: 5px;
+}
+.cart{
+    border-left: 1px solid;
+    position: relative;
+  }
+
+.cart-number{
+    background-color: red;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: -6px;
+    right: -6px;
+    color: aliceblue;
+    
 }
 .nav-bar{
     
@@ -16,59 +75,7 @@ main{
     border-bottom: 1px solid transparent; 
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
-
-.form{
-    width: 600px;
-    position: relative;
-}
-.form-control:focus{
-    box-shadow: none;
-    background-color: rgb(241, 242, 241);
-    border: 1px solid #8395a7;
-}
-.search{
-    border-radius: 10px;
-    width: 100%;
-    background-color: rgb(241, 242, 241);
-
-}
-
-.search-btn{
-    position: absolute; 
-    right: 20px;
-    top: 50%; 
-    transform: translateY(-50%); 
-    font-size: 1.2em; 
-    cursor: pointer;
-}
-.signin{
-    margin-right:20px;
-}
-.signin .account{
-    border: 1px solid rgb(164, 160, 160);
-    padding: 10px;
-    border-radius: 5px;
-}
 .dropdown-toggle::after {
     display: none !important; 
   }
 
-.cart{
-    position: relative;
-  }
-
-.cart-number{
-    background-color: red;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    top: -6px;
-    right: -6px;
-    color: aliceblue;
-    
-}
-hr{
-    border: 1px solid transparent; 
-    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
-}
