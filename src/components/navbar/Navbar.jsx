@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import '../navbar/Navbar.css'
 import '../navbar/responsiveNav.css'
 import { useState } from 'react';
@@ -27,11 +27,23 @@ const showDropdown = (e)=>{
 const hideDropdown = e => {
     setShow(false);
 }
+const [isScrolled, setIsScrolled] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY >150);
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
   return (
    <>
-     <header className='d-flex justify-content-between pt-3'>
+     <div  className='top d-flex justify-content-between pt-3 pb-1'>
         <div className="logo-search d-flex ms-4">
-        <span className='logo fw-bold fs-3'>PariShop</span>
+        <span className='logo fw-bold fs-4'>PariShop</span>
        <Form className="form ms-2">
             <Form.Control
               type="search"
@@ -47,27 +59,24 @@ const hideDropdown = e => {
             <div className='account'>
                 <Link to='/login'>
                     <FontAwesomeIcon icon={FaRightToBracket}/>
-                    <span className='fs-6'>Login | Signup</span>
+                    <span className=''>Login | Signup</span>
                 </Link>
             </div>
             <div className="cart ms-3">
               {cartNumber<=0?<></>: <div className="cart-number text-center"><span className='p-1' >{cartNumber}</span></div>}
-              <div><Link to='/cart'><img src={cart} alt="" style={{height:"40px"}} /></Link></div>
+              <div><Link to='/cart'><img src={cart} alt="" style={{height:"35px"}} /></Link></div>
             </div>
           </div>
-     </header>
-     <main>
-     <Navbar className="nav-bar bg-body-tertiary">
+     </div>
+     <Navbar className={`nav-bar bg-body-tertiary ${isScrolled ? 'hidden':' '}`}>
       <Container fluid>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Toggle  />
+        <Navbar.Collapse>
           <Nav
             className="nav"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
           >
           
-            <Nav.Link><Link to='/'  className='menu'>Home</Link></Nav.Link>
+            <Nav.Link as={NavLink} to='/' className='menu'>Home</Nav.Link>
             <NavDropdown title="Products" 
               id="collasible-nav-dropdown" 
               show={show}
@@ -83,16 +92,14 @@ const hideDropdown = e => {
               <Link to='/kid'>kids</Link>
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link className='menu'>  <Link to='/about'>About</Link></Nav.Link>
-            <Nav.Link className='menu'>
-            <Link to='/magazin'>Magazin</Link>
-            </Nav.Link>
+            <Nav.Link as={NavLink} to='/' className='menu'>Magazin</Nav.Link>
+            <Nav.Link as={NavLink} to='/' className='menu'>About</Nav.Link>
+
           </Nav>
           
         </Navbar.Collapse>
       </Container>
     </Navbar>
-     </main>
    </>
   );
 }
