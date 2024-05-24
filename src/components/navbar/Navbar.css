@@ -1,10 +1,17 @@
 .top{
-    position: sticky; /* Fix the navbar at the top */
-    top: 0; /* Set the top position to 0 */
-    left: 0; /* Set the left position to 0 */
-    width: 100%; /* Make the navbar full width */
+    display: flex;
+    justify-content: space-between;
+    position: sticky; 
+    top: 0; 
+    left: 0; 
+    width: 100%;
     z-index: 10; 
     background-color: white;
+  
+}
+.top-border{
+    border-bottom: 1px solid transparent; 
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 .logo-search span{
     color: #ff6b6b;
@@ -72,9 +79,6 @@
     
 }
 .nav-bar{
-    position: sticky; /* Fix the navbar at the top */
-    top: 0; /* Set the top position to 0 */
-    left: 0; /* Set the left position to 0 */
     width: 100%; /* Make the navbar full width */
     z-index: 9; 
     background-color: white;
@@ -82,8 +86,8 @@
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 .hidden{
-    top: -350px;
-    transition: top 0.3s;
+    top: -10px;
+    
    
 }
 .nav-bar a{

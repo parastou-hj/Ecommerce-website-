@@ -1,0 +1,12 @@
+.nav-down{
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    border-top: 1px solid transparent; 
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.nav-down span{
+   margin-left: 8px;
+}

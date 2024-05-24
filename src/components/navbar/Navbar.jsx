@@ -12,7 +12,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
 import search_icon from '../assets/search_icon.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FaRightToBracket } from 'react-icons/fa6';
+import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 
 function HeaderNavbar() {
@@ -31,7 +31,7 @@ const [isScrolled, setIsScrolled] = useState(false);
 
 useEffect(() => {
   const handleScroll = () => {
-    setIsScrolled(window.scrollY >150);
+    setIsScrolled(window.scrollY >50);
   };
 
   window.addEventListener('scroll', handleScroll);
@@ -41,7 +41,7 @@ useEffect(() => {
 
   return (
    <>
-     <div  className='top d-flex justify-content-between pt-3 pb-1'>
+     <div  className={`top pt-3 pb-2 ${isScrolled? 'top-border': ' '}`}>
         <div className="logo-search d-flex ms-4">
         <span className='logo fw-bold fs-4'>PariShop</span>
        <Form className="form ms-2">
@@ -58,7 +58,7 @@ useEffect(() => {
           <div className="signin-cart d-flex">
             <div className='account'>
                 <Link to='/login'>
-                    <FontAwesomeIcon icon={FaRightToBracket}/>
+                    <FontAwesomeIcon icon={faRightToBracket}/>
                     <span className=''>Login | Signup</span>
                 </Link>
             </div>
@@ -67,7 +67,8 @@ useEffect(() => {
               <div><Link to='/cart'><img src={cart} alt="" style={{height:"35px"}} /></Link></div>
             </div>
           </div>
-     </div>
+          </div>
+    
      <Navbar className={`nav-bar bg-body-tertiary ${isScrolled ? 'hidden':' '}`}>
       <Container fluid>
         <Navbar.Toggle  />
@@ -100,6 +101,7 @@ useEffect(() => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+   
    </>
   );
 }

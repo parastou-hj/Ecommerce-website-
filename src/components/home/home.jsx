@@ -3,6 +3,7 @@ import hero_image from '../assets/hero_image.png'
 import HomeSlider from '../home-slider/HomeSlider'
 import Popular from '../Popular/Popular'
 import SaleOff from '../SaleOff/SaleOff'
+import NavDown from '../navbar/NavDown'
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
     <HomeSlider/>
     <Popular/>
     <SaleOff/>
+    <NavDown/>
     </>
   )
 }

@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { CartContext } from './Context/CartContext';
 import Cart from './components/Cart/Cart';
 import Login from './components/Login/Login';
+import NavDown from './components/navbar/NavDown';
 
 
 
@@ -32,6 +33,7 @@ function App() {
       <div className="App">
       <BrowserRouter>
        <HeaderNavbar/>
+      
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path='/women' element={<ProductCategory category='women' banner={banner_women} />} />
@@ -43,6 +45,7 @@ function App() {
         <Route path='/cart' element={<Cart/>} />
         <Route path='/login' element={<Login/>} />
       </Routes>
+     
       </BrowserRouter>
     </div>
     </CartContext.Provider>
