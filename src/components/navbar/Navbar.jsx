@@ -12,7 +12,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
 import search_icon from '../assets/search_icon.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { faBasketShopping, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 
 function HeaderNavbar() {
@@ -43,7 +43,7 @@ useEffect(() => {
    <>
      <div  className={`top pt-3 pb-2 ${isScrolled? 'top-border': ' '}`}>
         <div className="logo-search d-flex ms-4">
-        <span className='logo fw-bold fs-4'>PariShop</span>
+        <span className='logo '><Link to='/'>PariShop</Link></span>
        <Form className="form ms-2">
             <Form.Control
               type="search"
@@ -58,13 +58,16 @@ useEffect(() => {
           <div className="signin-cart d-flex">
             <div className='account'>
                 <Link to='/login'>
-                    <FontAwesomeIcon icon={faRightToBracket}/>
+                    <FontAwesomeIcon icon={faRightToBracket} size='lg'/>
                     <span className=''>Login | Signup</span>
                 </Link>
             </div>
             <div className="cart ms-3">
               {cartNumber<=0?<></>: <div className="cart-number text-center"><span className='p-1' >{cartNumber}</span></div>}
-              <div><Link to='/cart'><img src={cart} alt="" style={{height:"35px"}} /></Link></div>
+              <div><Link to='/cart'>
+                    <FontAwesomeIcon icon={faBasketShopping} className='ms-2' size='xl'/>
+                    </Link>
+                    </div>
             </div>
           </div>
           </div>
@@ -77,8 +80,8 @@ useEffect(() => {
             className="nav"
           >
           
-            <Nav.Link as={NavLink} to='/' className='menu'>Home</Nav.Link>
-            <NavDropdown title="Products" 
+            <Nav.Link as={NavLink} to='/' className='menu-list'>Home</Nav.Link>
+            <NavDropdown as={NavLink} title="Products" 
               id="collasible-nav-dropdown" 
               show={show}
             onMouseEnter={showDropdown} 
@@ -93,8 +96,8 @@ useEffect(() => {
               <Link to='/kid'>kids</Link>
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link as={NavLink} to='/' className='menu'>Magazin</Nav.Link>
-            <Nav.Link as={NavLink} to='/' className='menu'>About</Nav.Link>
+            <Nav.Link as={NavLink} to='/' className='menu-list'>Magazin</Nav.Link>
+            <Nav.Link as={NavLink} to='/' className='menu-list'>About</Nav.Link>
 
           </Nav>
           

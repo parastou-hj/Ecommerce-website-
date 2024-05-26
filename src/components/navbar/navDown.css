@@ -1,4 +1,6 @@
 .nav-down{
+    display: none;
+    color: black;
     position: sticky;
     bottom: 0;
     left: 0;
@@ -9,4 +11,45 @@
 }
 .nav-down span{
    margin-left: 8px;
+}
+.nav-down-item{
+    cursor: pointer;
+    padding: 12px;
+    background-color: white;
+}
+.nav-down-item:hover{
+    background-color: rgb(239, 233, 233);
+
+}
+.nav-down-item a{
+    text-decoration: none;
+    color: black;
+}
+.nav-down-item a:hover{
+    color: black;
+}
+.basket{
+    position: relative;
+}
+.basket-number{
+    position: absolute;
+    z-index: 1;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    top: -10px;
+    left: -8px;
+    border-radius: 20%;
+    color: aliceblue;
+    font-size: 12px;
+   
+    
+}
+.icon{
+    position: relative;
+}
+@media (max-width:1024px){
+    .nav-down{
+        display: block;
+    }
 }

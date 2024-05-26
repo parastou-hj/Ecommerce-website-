@@ -3,6 +3,7 @@ import all_product from '../assets/all_product'
 import Item from '../Item/Item';
 import BreadCrumb from '../Breadcrumb/Breadcrumb';
 import '../ProductCategory/productCategory.css'
+import NavDown from '../navbar/NavDown';
 
 const ProductCategory = (props) => {
     const products= all_product;
@@ -21,6 +22,7 @@ const ProductCategory = (props) => {
       })}
      </div>
       </div>
+      <NavDown/>
     </div>
   )
 }
