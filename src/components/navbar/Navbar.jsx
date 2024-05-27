@@ -80,7 +80,7 @@ useEffect(() => {
             className="nav"
           >
           
-            <Nav.Link as={NavLink} to='/' className='menu-list'>Home</Nav.Link>
+            <Nav.Link as={NavLink} to='/' className='menu-list '>Home</Nav.Link>
             <NavDropdown as={NavLink} title="Products" 
               id="collasible-nav-dropdown" 
               show={show}
@@ -96,8 +96,8 @@ useEffect(() => {
               <Link to='/kid'>kids</Link>
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link as={NavLink} to='/' className='menu-list'>Magazin</Nav.Link>
-            <Nav.Link as={NavLink} to='/' className='menu-list'>About</Nav.Link>
+            <Nav.Link as={NavLink} to='/magazin' className='menu-list'>Magazin</Nav.Link>
+            <Nav.Link as={NavLink} to='/about' className='menu-list'>About</Nav.Link>
 
           </Nav>
           

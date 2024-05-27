@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom'
 
  const Item = (props) => {
   return (
-    <div className='col-lg-3 col-md-4 col-sm-6 '>
-      <div className=' item '>
-      <Link to={`/product/${props.id}`}><img onClick={window.scrollTo(0,0)} src={props.image} alt="" /></Link>
+    <div className='col-lg-3 col-md-4 col-sm-6 card-item'>
+      <Link to={`/product/${props.id}`}><div className=' item '>
+      <img onClick={window.scrollTo(0,0)} src={props.image} alt="" />
       <p className='p-1 ms-1'>{props.name}</p>
       <div className="item-prices d-flex flex-column justify-content-around p-1 ms-1 "> 
              <div className="item-price-old ">{props.old_price}</div>
              <div className="item-price-new text-danger">${props.price}</div>
        
       </div>
-    </div>
+    </div></Link>
  
     </div> )
 }

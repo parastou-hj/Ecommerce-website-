@@ -14,6 +14,7 @@ import { CartContext } from './Context/CartContext';
 import Cart from './components/Cart/Cart';
 import Login from './components/Login/Login';
 import NavDown from './components/navbar/NavDown';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -45,7 +46,6 @@ function App() {
         <Route path='/cart' element={<Cart/>} />
         <Route path='/login' element={<Login/>} />
       </Routes>
-     
       </BrowserRouter>
     </div>
     </CartContext.Provider>

@@ -4,6 +4,7 @@ import Item from '../Item/Item';
 import BreadCrumb from '../Breadcrumb/Breadcrumb';
 import '../ProductCategory/productCategory.css'
 import NavDown from '../navbar/NavDown';
+import Footer from '../Footer/Footer';
 
 const ProductCategory = (props) => {
     const products= all_product;
@@ -22,6 +23,7 @@ const ProductCategory = (props) => {
       })}
      </div>
       </div>
+      <Footer/>
       <NavDown/>
     </div>
   )
