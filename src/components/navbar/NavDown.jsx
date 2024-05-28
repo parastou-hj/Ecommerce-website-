@@ -11,26 +11,23 @@ const NavDown = () => {
   return (
     <div className='nav-down bg-white container-fluid'>
         <div className="row text-center ">
-            <div className="col nav-down-item">
-              <Link to='/'>
+        <Link to='/'  className="col nav-down-item">  
               <FontAwesomeIcon icon={faHome}/>
-                <span>Home</span>
-                </Link>
-            </div>
-            <div className="col  nav-down-item" >
+                <span>Home</span> 
+             </Link>
+           <Link className="col  nav-down-item" >
                 <FontAwesomeIcon icon={faBars}/>
                 <span>Category</span>
-            </div>
-            <div className="col nav-down-item d-flex justify-content-center">
-               <Link to='/cart'>
+            
+            </Link>
+            <Link to='/cart' className="col nav-down-item d-flex justify-content-center">
+              
                <div className='basket d-inline'>
               {cartNumber<=0?<></>: <span className='basket-number' >{cartNumber}</span>}
                <FontAwesomeIcon icon={faShoppingBasket} className='icon ms-2' size='xl'/>
                 </div>
                 <span>Basket</span>
-               </Link>
-              
-            </div>
+              </Link>
         </div>
 
     </div>

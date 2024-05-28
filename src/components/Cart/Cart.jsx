@@ -3,6 +3,8 @@ import { CartContext } from '../../Context/CartContext'
 import Item from '../Item/Item';
 import CartList from './CartList';
 import '../Cart/cart.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBagShopping, faBasketShopping, faRecycle } from '@fortawesome/free-solid-svg-icons';
 
 const Cart = () => {
     const cartContext=useContext(CartContext);
@@ -11,17 +13,19 @@ const Cart = () => {
     const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   return (
   <div className="container">
+    {cartItemsNumber===0?<div className='empty m-2 col-lg-12'>
+          <FontAwesomeIcon icon={faBasketShopping} size='2xl'  />
+         <span> your basket is empty!</span>
+        </div>:
     <div className="row">
     <div className="col-lg-8">
       <div className="container">
       <div className="row">
-        {cartItemsNumber===0?<div className='empty col-lg-8 col-md-12" m-2'>
-         <span> your cart is empty!</span>
-        </div>:<>{cartItems.map(item=>{return(<>
+        {cartItems.map(item=>{return(<>
           <CartList addedItem={item} key={item.id}/>
         
         </>)}
-        )}</> }
+        )} 
        
       </div>
       
@@ -36,6 +40,7 @@ const Cart = () => {
        </div>:<></>}
     </div>
     </div>
+}
   </div>
   )
 }

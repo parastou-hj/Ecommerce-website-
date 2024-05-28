@@ -41,7 +41,7 @@ useEffect(() => {
 
   return (
    <>
-     <div  className={`top pt-3 pb-2 ${isScrolled? 'top-border': ' '}`}>
+     <div  className={`top pt-3 pb-2 ${isScrolled? 'top-border': ' '} under-border`}>
         <div className="logo-search d-flex ms-4">
         <span className='logo '><Link to='/'>PariShop</Link></span>
        <Form className="form ms-2">

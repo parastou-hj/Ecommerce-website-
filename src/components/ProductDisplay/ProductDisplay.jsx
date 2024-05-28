@@ -7,6 +7,7 @@ import { Breadcrumb } from "react-bootstrap";
 import BreadCrumb from "../Breadcrumb/Breadcrumb";
 import { CartContext } from "../../Context/CartContext";
 import recycle_bin from '../assets/recycle_bin.png'
+import NavDown from '../navbar/NavDown'
 
 
 const ProductDisplay = ({product}) => {
@@ -21,8 +22,9 @@ const ProductDisplay = ({product}) => {
   return (
     <div>
       <BreadCrumb product={productShown}/>
-      <div className="product-display">
-        <div className="display-image">
+      <div className="container product-display">
+        <div className="row ">
+        <div className="col-lg-5 col-sm-12 display-image py-2">
           <div className="other-images ">
             <img src={productShown.image} alt="" />
             <img src={productShown.image} alt="" />
@@ -34,7 +36,7 @@ const ProductDisplay = ({product}) => {
 
           </div>
         </div>
-        <div className="description">
+        <div className="col-lg-7 col-sm-12 description py-2">
           <h1>{productShown.name}</h1>
           <div className="stars">
                 <img src={star_icon} alt="" />
@@ -69,7 +71,9 @@ const ProductDisplay = ({product}) => {
             
           
         </div>
+        </div>
       </div>
+      <NavDown/>
     </div>
   );
  function addToCart(){

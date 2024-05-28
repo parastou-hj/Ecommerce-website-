@@ -1,11 +1,9 @@
 .product-display{
-    display: flex;
-    margin: 0px 100px;
-    justify-content: space-around;
 }
 .display-image{
+    justify-content: center;
     display: flex;
-    gap: 17px;
+    gap: 10px;
 }
 .other-images{
     display: flex;
@@ -20,10 +18,9 @@
     height: 500px;
 }
 .description{
-   padding: 0px 70px;
    display: flex;
    flex-direction: column;
-   max-width: 600px;
+ 
 }
 .description h1{
     font-size: 25px;
@@ -78,7 +75,7 @@ text-decoration: line-through;
 .add-to-cart{
     padding: 20px 40px;
     width: 200px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     color: white;
     background: #ED4C67;
@@ -87,3 +84,4 @@ text-decoration: line-through;
     outline: none;
     cursor: pointer;
 }
+
