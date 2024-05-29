@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { CartContext } from './Context/CartContext';
 import Cart from './components/Cart/Cart';
 import Login from './components/Login/Login';
+import Categories from './components/Categories/Categories';
 
 
 
@@ -44,6 +45,7 @@ function App() {
         </Route>
         <Route path='/cart' element={<Cart/>} />
         <Route path='/login' element={<Login/>} />
+        <Route path='/categories' element={<Categories/>} />
       </Routes>
       </BrowserRouter>
     </div>

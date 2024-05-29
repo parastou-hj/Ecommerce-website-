@@ -6,10 +6,10 @@ import Item from '../Item/Item';
 const Popular = () => {
   const product= data;
   return (
-    <div className='d-flex flex-column align-items-center mb-5 p-5'>
+    <div className='d-flex flex-column align-items-center pt-3'>
       <h1>most popular</h1>
       <hr style={{width:"150px", height:"2px"}}/>
-      <div className="container justify-content-center p-3">
+      <div className="container justify-content-center">
       <div className="row">
       {product.map((i)=>{
         return(<>

@@ -15,7 +15,7 @@ const NavDown = () => {
               <FontAwesomeIcon icon={faHome}/>
                 <span>Home</span> 
              </Link>
-           <Link className="col  nav-down-item" >
+           <Link to='/categories' className="col  nav-down-item" >
                 <FontAwesomeIcon icon={faBars}/>
                 <span>Category</span>
             

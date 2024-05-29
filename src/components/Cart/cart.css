@@ -1,3 +1,6 @@
+.cart-inside{
+    height: 100vh;
+}
 .empty{
     display: flex;
     flex-direction: column;

@@ -1,14 +1,20 @@
+.slider-item-card{
+    width: 205px;
+    height: 250px;
+}
 .slider-item{
 text-align:  center;
-height: 250px;
 font-size: 16px;
+width: 205px;
 }
 
 .slider-item img{
-    height: 150px;
-    width: 150px;
-    margin: auto;
-
+    height: 180px;
+    width: 205px;
+}
+.item-price-new{
+    font-size: 18px;
+    font-weight: 600;
 }
 .off span{
     border-radius: 50px;

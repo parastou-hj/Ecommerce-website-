@@ -8,7 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import cart from '../assets/cart.png'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink,  useNavigate, useLocation } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
 import search_icon from '../assets/search_icon.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,8 +19,10 @@ function HeaderNavbar() {
   const cartContext=useContext(CartContext);
   const cartNumber= cartContext.cartItemsNumber;
   const [search,setSearch]=useState('');
-  console.log(search)
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
 const showDropdown = (e)=>{
     setShow(!show);
 }
@@ -33,26 +35,47 @@ useEffect(() => {
   const handleScroll = () => {
     setIsScrolled(window.scrollY >50);
   };
-
   window.addEventListener('scroll', handleScroll);
-
   return () => window.removeEventListener('scroll', handleScroll);
 }, []);
+
+const handleSearchChange = (e) => {
+  const value = e.target.value;
+  setSearch(value);
+};
+
+const handleSearch = () => {
+  if (search.trim()) {
+    navigate(`/${search}`);
+  }
+};
+useEffect(() => {
+  setSearch('');
+}, [location]);
+
+
 
   return (
    <>
      <div  className={`top pt-3 pb-2 ${isScrolled? 'top-border': ' '} under-border`}>
         <div className="logo-search d-flex ms-4">
         <span className='logo '><Link to='/'>PariShop</Link></span>
-       <Form className="form ms-2">
+       <Form className="form ms-2" onSubmit={(e) => e.preventDefault()}>
             <Form.Control
               type="search"
               placeholder="Search"
               className=" search"
               aria-label="Search"
-              onChange={(e)=>setSearch(e.target.value)}
+              id='search-input'
+              value={search}
+              onChange={handleSearchChange}
             />
-          <Link to={search}><img className='search-btn' src={search_icon} style={{height:'20px',width:'20px'}} /></Link>
+        
+            <img onClick={handleSearch}
+            className='search-btn'
+             src={search_icon}
+              style={{height:'20px',width:'20px'}} />
+            
        </Form>
         </div>
           <div className="signin-cart d-flex">

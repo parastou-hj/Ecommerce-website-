@@ -45,7 +45,7 @@ const SaleSlider = () => {
     ],
   };
   return (
-    <div className=" off bg-danger p-4 mx-2 my-5">
+    <div className=" off bg-danger p-4 mx-2 my-5 ">
       <div className="slider-container ">
         <Slider {...settings}>
           <img className="off-image" src={off} alt="" />
