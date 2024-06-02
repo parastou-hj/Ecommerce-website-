@@ -14,7 +14,7 @@
 }
 .nav-down-item{
     cursor: pointer;
-    padding: 12px;
+    padding:10px 5px;
     background-color: white;
 }
 .nav-down-item:hover{
@@ -35,7 +35,7 @@
 .basket-number{
     position: absolute;
     z-index: 1;
-    background-color: red;
+    background-color: #fd5a5a;
     width: 20px;
     height: 20px;
     top: -10px;
@@ -47,7 +47,7 @@
     
 }
 .icon{
-    position: relative;
+
 }
 @media (max-width:1024px){
     .nav-down{

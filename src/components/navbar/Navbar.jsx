@@ -13,7 +13,7 @@ import  {Context}  from "../../Context/Context";
 import search_icon from "../assets/search_icon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBasketShopping,
+  faShoppingBasket,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -96,24 +96,22 @@ function HeaderNavbar({ search, setSearch }) {
               <span className="">Login | Signup</span>
             </Link>
           </div>
-          <div className="cart ms-3">
+          
+          <div className="cart ms-3 text-center">
             {cartNumber <= 0 ? (
               <></>
             ) : (
-              <div className="cart-number text-center">
-                <span className="p-1">{cartNumber}</span>
-              </div>
+              <span className="cart-number">{cartNumber}</span>
             )}
-            <div>
-              <Link to="/cart">
-                <FontAwesomeIcon
-                  icon={faBasketShopping}
-                  className="ms-2"
-                  size="xl"
-                />
-              </Link>
-            </div>
+            <Link to="/cart">
+            <FontAwesomeIcon
+              icon={faShoppingBasket}
+              className="icon ms-2"
+              size="xl"
+            />
+            </Link>
           </div>
+
         </div>
       </div>
 

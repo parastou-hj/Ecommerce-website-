@@ -6,6 +6,7 @@ import {
   faHome,
   faShoppingBag,
   faShoppingBasket,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { Context } from "../../Context/Context";
 import { Link } from "react-router-dom";
@@ -28,7 +29,7 @@ const NavDown = () => {
           to="/cart"
           className="col nav-down-item d-flex justify-content-center"
         >
-          <div className="basket d-inline">
+          <div className="basket">
             {cartNumber <= 0 ? (
               <></>
             ) : (
@@ -41,6 +42,10 @@ const NavDown = () => {
             />
           </div>
           <span>Basket</span>
+        </Link>
+        <Link to="/login" className="col  nav-down-item">
+          <FontAwesomeIcon icon={faUser} />
+          <span>Account</span>
         </Link>
       </div>
     </div>

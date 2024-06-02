@@ -21,7 +21,7 @@
    font-size:xx-large;
    font-family:  "Dancing Script", cursive;
     text-decoration: none;
-    color: #ff6b6b;
+    color: #fd5a5a;
 }
 .logo-search{
     align-items: center;
@@ -89,15 +89,15 @@ input[type="search"]::-ms-clear {
 }
 
 .cart-number{
-    background-color: red;
     position: absolute;
+    background-color: #fd5a5a;
     width: 20px;
     height: 20px;
-    border-radius: 20%;
     top: -10px;
-    right: -10px;
+    right: -12px;
+    border-radius: 20%;
     color: aliceblue;
-    
+    font-size: 12px;  
 }
 .nav{
     

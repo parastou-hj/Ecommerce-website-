@@ -13,7 +13,7 @@ const Search = ({search,setSearch}) => {
     const {indexOfFirstProduct,indexOfLastProduct,itemsInPage,currentPage,handlePageChange}=searchContext;
     const trimmedSearch = search.trim().toLocaleLowerCase();
     const filter = products.filter((product) => {
-      return trimmedSearch !== "" && product.name.toLocaleLowerCase().includes(trimmedSearch);
+      return trimmedSearch !== "" && product.name.toLocaleLowerCase().includes(trimmedSearch)|| product.category===trimmedSearch;
     });
     const currentProducts = filter.slice(indexOfFirstProduct, indexOfLastProduct);
 
