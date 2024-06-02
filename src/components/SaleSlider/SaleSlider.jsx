@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import SliderItem from "../SliderItem/SliderItem";
 import off from "../assets/off.png";
 import "../SaleSlider/SaleSlider.css";
+import CountdownTimer from "../CountDownTimer/CountDownTimer";
 
 const SaleSlider = () => {
   const offProduct = new_collections;
@@ -48,7 +49,10 @@ const SaleSlider = () => {
     <div className=" off bg-danger p-4 mx-2 my-5 ">
       <div className="slider-container ">
         <Slider {...settings}>
-          <img className="off-image" src={off} alt="" />
+         <div className="flex flex-column">
+         <img className="off-image" src={off} alt="" />
+         <CountdownTimer initialHours={1} initialMinutes={30} initialSeconds={45} />
+         </div>
           {offProduct.map((item, index) => {
             return (
               <SliderItem
