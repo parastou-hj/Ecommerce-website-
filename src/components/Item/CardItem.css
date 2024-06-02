@@ -5,13 +5,10 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     font-size: 0.9rem;
     height: 350px;
-    margin-bottom:5px ;
- 
-   
-    
+    margin-bottom:5px ;  
 }
 .item img{
-   height: 70%;
+   height: 65%;
 }
 .card-item{
     text-align: center;
@@ -45,4 +42,13 @@
 }
 .item button:hover{
     background-color: #913333;
+}
+.skeleton-item{
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 0.9rem;
+    height: 350px;
+    margin-bottom:5px ;
+ 
+   
 }

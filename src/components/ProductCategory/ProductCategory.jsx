@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import all_product from '../assets/all_product';
 import Item from '../Item/Item';
 import BreadCrumb from '../Breadcrumb/Breadcrumb';
@@ -6,20 +6,13 @@ import '../ProductCategory/productCategory.css';
 import NavDown from '../navbar/NavDown';
 import Footer from '../Footer/Footer';
 import Paginate from '../Pagination/Pagination';
+import { Context } from '../../Context/Context';
 
 const ProductCategory = (props) => {
-  const itemsPerPage = 20;
+  const productCategoryContext=useContext(Context);
+ const {indexOfFirstProduct,indexOfLastProduct,itemsInPage,currentPage,handlePageChange}=productCategoryContext;
   const products = all_product.filter(product => product.category === props.category);
-
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const indexOfLastProduct = currentPage * itemsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+ const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
   return (
     <div>
@@ -38,7 +31,7 @@ const ProductCategory = (props) => {
         </div>
       </div>
       <Paginate
-        itemsPerPage={itemsPerPage}
+        itemsPerPage={itemsInPage}
         totalItems={products.length}
         currentPage={currentPage}
         onPageChange={handlePageChange}

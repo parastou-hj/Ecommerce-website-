@@ -4,7 +4,7 @@ import '../Login/login.css'
 const Login = () => {
     const[user,serUser]=useState('login')
   return (
-   <>
+   <div className='mb-5'>
    {user==='login'?
     <div className='login container'>
       <div className="row">
@@ -26,7 +26,7 @@ const Login = () => {
             </div>
         </form>
         </div>
-        <div className="login-side col text-center">
+        <div className="col login-side text-center">
             <div className="side-text">
                     <div className="welcome mb-1 ">Welcome Back!</div>
                     <div >Don't have an account?</div>
@@ -72,7 +72,7 @@ const Login = () => {
         
       </div>
     </div>}
-   </>
+   </div>
   )
 }
 
