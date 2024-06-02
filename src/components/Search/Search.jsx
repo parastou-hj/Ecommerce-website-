@@ -33,7 +33,7 @@ const Search = ({search,setSearch}) => {
                     price={product.price}
                   />
                 )
-            }):<div className='text-center not-found'><span>Product not found!</span></div>
+            }):<div className='text-center not-found'><div>Product not found!</div></div>
             }
 
         </div>

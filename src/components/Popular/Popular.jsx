@@ -1,12 +1,13 @@
 import React from 'react'
 import data from '../assets/data'
 import Item from '../Item/Item';
+import '../Popular/popular.css'
 
 
 const Popular = () => {
   const product= data;
   return (
-    <div className='d-flex flex-column align-items-center pt-3'>
+    <div className='popular d-flex flex-column align-items-center pt-5'>
       <h1>most popular</h1>
       <hr style={{width:"150px", height:"2px"}}/>
       <div className="container justify-content-center">

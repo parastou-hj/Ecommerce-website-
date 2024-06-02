@@ -23,9 +23,9 @@ const Cart = () => {
     <div className="cart-container">
       <div className="container cart-inside">
         {cartItemsNumber === 0 ? (
-          <div className="empty m-2 col-lg-12">
+          <div className="empty mt-5 ">
             <FontAwesomeIcon icon={faBasketShopping} size="2xl" />
-            <span> your basket is empty!</span>
+            <span> Your basket is empty!</span>
           </div>
         ) : (
           <div className="row ">

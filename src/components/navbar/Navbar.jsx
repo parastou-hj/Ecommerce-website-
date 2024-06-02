@@ -23,6 +23,7 @@ function HeaderNavbar({ search, setSearch }) {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const[activeclass, setActiveClass]=useState("home");
 
   const showDropdown = (e) => {
     setShow(!show);
@@ -51,6 +52,12 @@ function HeaderNavbar({ search, setSearch }) {
       navigate(`/search`);
     }
   };
+  useEffect(()=>{
+    if(location.pathname!== '/search'){
+      setSearch('');
+      setSearchInput('')
+    }
+  },[location,setSearch])
 
   return (
     <>
@@ -70,6 +77,7 @@ function HeaderNavbar({ search, setSearch }) {
               className=" search"
               aria-label="Search"
               id="search-input"
+              value={searchInput}
               onChange={handleSearchInputChange}
             />
 
@@ -116,7 +124,7 @@ function HeaderNavbar({ search, setSearch }) {
           <Navbar.Toggle />
           <Navbar.Collapse>
             <Nav className="nav">
-              <Nav.Link as={NavLink} to="/" className="menu-list ">
+              <Nav.Link as={NavLink} onClick={()=>setActiveClass('home')} to="/" className={`menu-list ${activeclass==='home'?"activeclass": ''} `}>
                 Home
               </Nav.Link>
               <NavDropdown
@@ -127,22 +135,22 @@ function HeaderNavbar({ search, setSearch }) {
                 onMouseEnter={showDropdown}
                 onMouseLeave={hideDropdown}
                 caret="false"
-                className="menu"
+                className={`menu ${activeclass==='products'?"activeclass": ''} `}
               >
                 <NavDropdown.Item>
-                  <Link to="/women">women</Link>
+                  <Link to="/women" onClick={()=>setActiveClass('products')}>women</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/men">men</Link>
+                  <Link to="/men"  onClick={()=>setActiveClass('products')}>men</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/kid">kids</Link>
+                  <Link to="/kid"  onClick={()=>setActiveClass('products')}>kids</Link>
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link as={NavLink} to="/magazin" className="menu-list">
+              <Nav.Link as={NavLink} to="/magazin" onClick={()=>setActiveClass('magazin')}  className={`menu-list ${activeclass==='magazin'?"activeclass": ''} `}>
                 Magazin
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/about" className="menu-list">
+              <Nav.Link as={NavLink} to="/about" onClick={()=>setActiveClass('about')} className={`menu-list ${activeclass==='about'?"activeclass": ''} `}>
                 About
               </Nav.Link>
             </Nav>
