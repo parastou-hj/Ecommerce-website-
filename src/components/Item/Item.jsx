@@ -7,7 +7,6 @@ import 'react-loading-skeleton/dist/skeleton.css'
  const Item = (props) => {
   const[loading,setLoading]=useState(true);
   useEffect(() => {
-    // Simulate a fetch call
     setTimeout(() => {
 
       setLoading(false);

@@ -3,6 +3,9 @@ import axios from 'axios';
 import '../Magazin/Magazin.css';
 import NavDown from '../navbar/NavDown';
 import Footer from '../Footer/Footer';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
+
 
 const Magazin = () => {
   const [articles, setArticles] = useState([]);
@@ -36,13 +39,21 @@ const Magazin = () => {
       </header>
       
       <main className="magazin-content container">
-        {loading ? (
-          <p>Loading articles...</p>
-        ) : (
+       
           <section className="featured-articles">
             <h2>Featured Articles</h2>
             <div className="row">
-              {articles.map((article) => (
+            {loading ? (
+              Array.from({ length: 9}).map((_, index) => (
+                <div className="col-md-4" key={index}>
+                  <div className="article-card">
+                    <Skeleton height={200} width="100%" borderRadius="5px" />
+                    <Skeleton count={3} />
+                  </div>
+                </div>
+              ))
+            ) : (
+              articles.map((article) => (
                 <div className="col-md-4" key={article._id}>
                   <div className="article-card">
                     <img
@@ -54,10 +65,11 @@ const Magazin = () => {
                     <a href={article.web_url} target="_blank" rel="noopener noreferrer">Read more</a>
                   </div>
                 </div>
-              ))}
+              ))
+            )}
             </div>
           </section>
-        )}
+
       </main>
       
       <Footer />

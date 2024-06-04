@@ -37,6 +37,7 @@
   }
   
   .article-card {
+    height: 500px;
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 15px;
@@ -46,8 +47,9 @@
   }
   
   .article-card img {
+    max-height: 200px;
     width: 100%;
-    height: auto;
+
     border-radius: 5px;
   }
   
