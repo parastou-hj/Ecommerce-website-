@@ -1,8 +1,25 @@
 import React, { useState } from 'react'
 import '../Login/login.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { userAction } from '../../features/userSlice'
 
 const Login = () => {
-    const[user,serUser]=useState('login')
+    const[user,serUser]=useState('login');
+    const [userName,setUserName]=useState('')
+    const dispatch=useDispatch()
+    const navigate=useNavigate()
+    const handeleSubmit=(e)=>{
+        e.preventDefault();
+        dispatch(userAction.LogIn())
+        navigate('/user')
+        dispatch(userAction.updateUser(userName))
+        console.log(userName)
+    }
+    const handeleChangeInput=(e)=>{
+        setUserName(e.target.value);
+    }
+
   return (
    <div className='mb-5'>
    {user==='login'?
@@ -10,16 +27,19 @@ const Login = () => {
       <div className="row">
         <div className="col">
             <div className='title p-3 m-1'>Sign In</div>
-        <form className='p-3'>
+        <form className='p-3' onSubmit={handeleSubmit}>
             <div className="mb-3">
                 <label for="InputEmail1" className="form-label">Username</label>
-                <input type="email" className="form-control inputs" id="InputEmail" aria-describedby="emailHelp" placeholder='Username'/>
+                <input className="form-control inputs" id="InputEmail" aria-describedby="emailHelp" placeholder='Username'
+                value={userName}
+                onChange={handeleChangeInput}
+                />
                 </div>
             <div className="mb-3">
                 <label for="InputPassword1" class="form-label">Password</label>
                 <input type="password" className="form-control inputs " id="InputPassword" placeholder='Password'/>
             </div>
-            <button type="submit" className="">Sign In</button>
+            <button  type="submit" className="">Sign In</button>
             <div class="mt-3 form-check">
                 <input type="checkbox" className="form-check-input" id="Check"/>
                 <label class="form-check-label" for="Check">Remember Me</label>

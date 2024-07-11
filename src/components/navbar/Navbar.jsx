@@ -16,14 +16,20 @@ import {
   faShoppingBasket,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
+import { selectCartItemsCount } from "../../features/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserLogin, selectUserName } from "../../features/userSlice";
 
 function HeaderNavbar({ search, setSearch }) {
   const HeaderContext = useContext(Context);
-  const cartNumber = HeaderContext.cartItemsNumber;
+  const cartNumber = useSelector(selectCartItemsCount);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch=useDispatch()
   const[activeclass, setActiveClass]=useState("home");
+  const auth = useSelector(selectUserLogin);
+  const username = useSelector(selectUserName);
 
   const showDropdown = (e) => {
     setShow(!show);
@@ -91,9 +97,9 @@ function HeaderNavbar({ search, setSearch }) {
         </div>
         <div className="signin-cart d-flex">
           <div className="account">
-            <Link to="/login">
+          <Link to={!auth?"/login":'/user'}>
               <FontAwesomeIcon icon={faRightToBracket} size="lg" />
-              <span className="">Login | Signup</span>
+        {username===''? <span className="">Login | Signup</span>:username}
             </Link>
           </div>
           

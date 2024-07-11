@@ -9,7 +9,7 @@ import ProductCategory from "./components/ProductCategory/ProductCategory";
 import banner_women from "./components/assets/banner_women.png";
 import banner_mens from "./components/assets/banner_mens.png";
 import banner_kids from "./components/assets/banner_kids.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Context } from "./Context/Context";
 import Cart from "./components/Cart/Cart";
 import Login from "./components/Login/Login";
@@ -18,6 +18,8 @@ import Magazin from "./components/Magazin/Magazin";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import Search from "./components/Search/Search";
+import User from "./components/user/User";
+import { useSelector } from "react-redux";
 
 function App() {
   const [cartItems, setCartItem] = useState([]);
@@ -28,16 +30,13 @@ function App() {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+ 
   
   const indexOfLastProduct = currentPage * itemsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
   return (
     <Context.Provider
       value={{
-        cartItems: cartItems,
-        inCart: addToCart,
-        cartItemsNumber: cartItemsNumber,
-        decCart: decFromCart,
        itemsInPage:itemsPerPage,
        indexOfFirstProduct:indexOfFirstProduct,
        indexOfLastProduct:indexOfLastProduct,
@@ -75,6 +74,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/user" element={<User/>}/>
             <Route
               path="/search"
               element={<Search setSearch={setSearch} search={search} />}
@@ -84,45 +84,7 @@ function App() {
       </div>
     </Context.Provider>
   );
-  function addToCart(item) {
-    const existInCart = cartItems.find((i) => i.id === item.id);
-    if (existInCart) {
-      setCartItem(
-        cartItems.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        )
-      );
-    } else {
-      setCartItem([...cartItems, { ...item, quantity: 1 }]);
-    }
-    if (setCartItem.length === 0) {
-      setItemNumer(0);
-    } else {
-      setItemNumer((prev) => prev + 1);
-    }
-  }
-  function decFromCart(item) {
-    const existInCart = cartItems.find((i) => i.id === item.id);
-    const removeFromCart = cartItems.filter((i) => i.id !== item.id);
-    if (existInCart.quantity > 1) {
-      setCartItem(
-        cartItems.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity - 1 }
-            : cartItem
-        )
-      );
-    } else {
-      setCartItem([...removeFromCart]);
-    }
-    if (setCartItem.length === 0) {
-      setItemNumer(0);
-    } else {
-      setItemNumer((prev) => prev - 1);
-    }
-  }
+ 
 }
 
 export default App;
