@@ -1,39 +1,44 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import "../ProductDisplay/productDisplay.css";
-import P1_product_i1 from "../assets/p1_product_i1.png";
 import star_icon from "../assets/star_icon.png";
 import star_dull_icon from "../assets/star_dull_icon.png";
-import { Breadcrumb } from "react-bootstrap";
 import BreadCrumb from "../Breadcrumb/Breadcrumb";
-import { Context } from "../../Context/Context";
 import recycle_bin from "../assets/recycle_bin.png";
 import NavDown from "../navbar/NavDown";
+import { addToCart, removeFromCart } from "../../features/cartSlice";
 
 const ProductDisplay = ({ product }) => {
-  const productShown = product;
-  const ProductContext = useContext(Context);
-  const cartItems = ProductContext.cartItems;
-  const addedToCart = cartItems.find((item) => item.id === productShown.id);
-  const cartNumber = ProductContext.cartItemsNumber;
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  const addedToCart = cartItems.find((item) => item.id === product.id);
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(product));
+  };
 
   return (
     <div>
-      <BreadCrumb product={productShown} />
+      <BreadCrumb product={product} />
       <div className="container product-display">
         <div className="row ">
           <div className="col-lg-5 col-sm-12 display-image py-2">
             <div className="other-images ">
-              <img src={productShown.image} alt="" />
-              <img src={productShown.image} alt="" />
-              <img src={productShown.image} alt="" />
-              <img src={productShown.image} alt="" />
+              <img src={product.image} alt="" />
+              <img src={product.image} alt="" />
+              <img src={product.image} alt="" />
+              <img src={product.image} alt="" />
             </div>
             <div className="original-image">
-              <img src={productShown.image} alt="" />
+              <img src={product.image} alt="" />
             </div>
           </div>
           <div className="col-lg-7 col-sm-12 description py-2">
-            <h1>{productShown.name}</h1>
+            <h1>{product.name}</h1>
             <div className="stars">
               <img src={star_icon} alt="" />
               <img src={star_icon} alt="" />
@@ -43,8 +48,8 @@ const ProductDisplay = ({ product }) => {
               <p>(122)</p>
             </div>
             <div className="product-prices">
-              <div className="old-price">{productShown.old_price}</div>
-              <div className="new-price">${productShown.price}</div>
+              <div className="old-price">{product.old_price}</div>
+              <div className="new-price">${product.price}</div>
             </div>
             <div className="product-description">
               <p>
@@ -63,25 +68,26 @@ const ProductDisplay = ({ product }) => {
                 <div>XL</div>
               </div>
             </div>
-            {addedToCart && addedToCart.quantity > 0 ? (
+            {addedToCart&&addedToCart.quantity>0 ? (
               <div className="num ">
                 {addedToCart.quantity === 1 ? (
                   <img
-                    onClick={decFromCart}
+                    onClick={handleRemoveFromCart}
                     src={recycle_bin}
                     style={{ height: "40px" }}
                     className="p-2"
+                    alt="Remove from cart"
                   />
                 ) : (
-                  <button onClick={decFromCart} className="">
+                  <button onClick={handleRemoveFromCart} className="">
                     -
                   </button>
                 )}
                 <span className="text-center p-1">{addedToCart.quantity}</span>
-                <button onClick={addToCart}>+</button>
+                <button onClick={handleAddToCart}>+</button>
               </div>
             ) : (
-              <button className="add-to-cart" onClick={addToCart}>
+              <button className="add-to-cart" onClick={handleAddToCart}>
                 Add to Cart
               </button>
             )}
@@ -91,12 +97,6 @@ const ProductDisplay = ({ product }) => {
       <NavDown />
     </div>
   );
-  function addToCart() {
-    ProductContext.inCart(productShown);
-  }
-  function decFromCart() {
-    ProductContext.decCart(productShown);
-  }
 };
 
 export default ProductDisplay;

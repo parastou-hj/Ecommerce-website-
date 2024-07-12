@@ -10,11 +10,12 @@ import {
   faRecycle,
 } from "@fortawesome/free-solid-svg-icons";
 import NavDown from "../navbar/NavDown";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
   const CartContext = useContext(Context);
-  const cartItems = CartContext.cartItems;
-  const cartItemsNumber = CartContext.cartItemsNumber;
+  const cartItems =useSelector(state=>state.cart.items);
+  const cartItemsNumber = useSelector(state=>state.cart.totalQuantity);
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0

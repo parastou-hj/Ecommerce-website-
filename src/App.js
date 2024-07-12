@@ -20,8 +20,7 @@ import Contact from "./components/Contact/Contact";
 import Search from "./components/Search/Search";
 
 function App() {
-  const [cartItems, setCartItem] = useState([]);
-  const [cartItemsNumber, setItemNumer] = useState(0);
+
   const [search, setSearch] = useState("");
   const itemsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,10 +33,6 @@ function App() {
   return (
     <Context.Provider
       value={{
-        cartItems: cartItems,
-        inCart: addToCart,
-        cartItemsNumber: cartItemsNumber,
-        decCart: decFromCart,
        itemsInPage:itemsPerPage,
        indexOfFirstProduct:indexOfFirstProduct,
        indexOfLastProduct:indexOfLastProduct,
@@ -84,45 +79,7 @@ function App() {
       </div>
     </Context.Provider>
   );
-  function addToCart(item) {
-    const existInCart = cartItems.find((i) => i.id === item.id);
-    if (existInCart) {
-      setCartItem(
-        cartItems.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        )
-      );
-    } else {
-      setCartItem([...cartItems, { ...item, quantity: 1 }]);
-    }
-    if (setCartItem.length === 0) {
-      setItemNumer(0);
-    } else {
-      setItemNumer((prev) => prev + 1);
-    }
-  }
-  function decFromCart(item) {
-    const existInCart = cartItems.find((i) => i.id === item.id);
-    const removeFromCart = cartItems.filter((i) => i.id !== item.id);
-    if (existInCart.quantity > 1) {
-      setCartItem(
-        cartItems.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity - 1 }
-            : cartItem
-        )
-      );
-    } else {
-      setCartItem([...removeFromCart]);
-    }
-    if (setCartItem.length === 0) {
-      setItemNumer(0);
-    } else {
-      setItemNumer((prev) => prev - 1);
-    }
-  }
+ 
 }
 
 export default App;

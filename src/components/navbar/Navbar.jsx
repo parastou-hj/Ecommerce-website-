@@ -16,10 +16,11 @@ import {
   faShoppingBasket,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 function HeaderNavbar({ search, setSearch }) {
   const HeaderContext = useContext(Context);
-  const cartNumber = HeaderContext.cartItemsNumber;
+  const cartNumber = useSelector(state=>state.cart.totalQuantity);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();

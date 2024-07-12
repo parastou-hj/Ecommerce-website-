@@ -4,9 +4,18 @@ import remove_icon from "../assets/remove_icon.png";
 import "../Cart/cartList.css";
 import recycle_bin from "../assets/recycle_bin.png";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart, removeFromCart } from "../../features/cartSlice";
 
 const CartList = ({ addedItem }) => {
-  const CartContext = useContext(Context);
+const dispatch=useDispatch();
+
+const handeleRemove=()=>{
+  dispatch(removeFromCart(addedItem))
+}
+const handeleAdd=()=>{
+  dispatch(addToCart(addedItem))
+}
 
   const item = addedItem;
   return (
@@ -22,18 +31,18 @@ const CartList = ({ addedItem }) => {
           <div className="num ">
             {item.quantity === 1 ? (
               <img
-                onClick={decFromCart}
+                onClick={handeleRemove}
                 src={recycle_bin}
                 style={{ height: "40px" }}
                 className="p-2"
               />
             ) : (
-              <button onClick={decFromCart} className="">
+              <button onClick={handeleRemove} className="">
                 -
               </button>
             )}
             <span className="text-center p-1">{item.quantity}</span>
-            <button onClick={addToCart} className="">
+            <button onClick={handeleAdd} className="">
               +
             </button>
           </div>
@@ -42,12 +51,7 @@ const CartList = ({ addedItem }) => {
       </div>
     </>
   );
-  function addToCart() {
-    CartContext.inCart(item);
-  }
-  function decFromCart() {
-    CartContext.decCart(item);
-  }
+
 };
 
 export default CartList;
