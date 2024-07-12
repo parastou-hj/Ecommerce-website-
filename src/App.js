@@ -22,25 +22,9 @@ import Search from "./components/Search/Search";
 function App() {
 
   const [search, setSearch] = useState("");
-  const itemsPerPage = 20;
-  const [currentPage, setCurrentPage] = useState(1);
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
   
-  const indexOfLastProduct = currentPage * itemsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
   return (
-    <Context.Provider
-      value={{
-       itemsInPage:itemsPerPage,
-       indexOfFirstProduct:indexOfFirstProduct,
-       indexOfLastProduct:indexOfLastProduct,
-       handlePageChange:handlePageChange,
-       currentPage:currentPage
-
-      }}
-    >
+  
       <div className="App">
         <BrowserRouter>
           <HeaderNavbar setSearch={setSearch} search={search} />
@@ -77,7 +61,6 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
-    </Context.Provider>
   );
  
 }

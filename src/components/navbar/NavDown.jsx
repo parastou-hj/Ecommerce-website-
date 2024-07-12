@@ -10,9 +10,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Context } from "../../Context/Context";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const NavDown = () => {
   const NavContext = useContext(Context);
-  const cartNumber = NavContext.cartItemsNumber;
+  const cartNumber = useSelector(state=>state.cart.totalQuantity);
+
 
   return (
     <div className="nav-down bg-white container-fluid">

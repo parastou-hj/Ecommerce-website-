@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import all_product from '../assets/all_product'
 import Item from '../Item/Item';
 import '../Search/Search.css'
@@ -6,24 +6,33 @@ import Footer from '../Footer/Footer';
 import NavDown from '../navbar/NavDown';
 import Paginate from '../Pagination/Pagination';
 import { Context } from '../../Context/Context';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentPage, selectIndexOfFirstProduct, selectIndexOfLastProduct, selectItemsPerPage, selectTotalItems, setCurrentPage, setTotalItems } from '../../features/paginationSlice';
 
 const Search = ({search,setSearch}) => {
-  const searchContext=useContext(Context);
     const products=all_product;
-    const {indexOfFirstProduct,indexOfLastProduct,itemsInPage,currentPage,handlePageChange}=searchContext;
+    const dispatch = useDispatch();
+    const indexOfFirstProduct=useSelector(selectIndexOfFirstProduct)
+    const indexOfLastProduct=useSelector(selectIndexOfLastProduct)
+    const itemsPerPage=useSelector(selectItemsPerPage)
+    const currentPage=useSelector(selectCurrentPage)
     const trimmedSearch = search.trim().toLocaleLowerCase();
-    const filter = products.filter((product) => {
+    const filteredProducts = products.filter((product) => {
       return trimmedSearch !== "" && product.name.toLocaleLowerCase().includes(trimmedSearch)|| product.category===trimmedSearch;
     });
-    const currentProducts = filter.slice(indexOfFirstProduct, indexOfLastProduct);
+    const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
+    useEffect(() => {
+      dispatch(setTotalItems(filteredProducts.length));
+      dispatch(setCurrentPage(1)); 
+    }, [dispatch, filteredProducts.length]);
   return (
     <div>
 
     
     <div className='container p-5'>
         <div className="row">
-            {filter.length>0?currentProducts.map((product)=>{
+            {filteredProducts.length>0?currentProducts.map((product)=>{
                 return(
                     <Item
                     key={product.id}
@@ -41,12 +50,7 @@ const Search = ({search,setSearch}) => {
  
     </div>
    {
-    filter.length>0?  <Paginate
-    itemsPerPage={itemsInPage}
-    totalItems={filter.length}
-    currentPage={currentPage}
-    onPageChange={handlePageChange}
-  />:<></>
+    filteredProducts.length>0?  <Paginate />:<></>
    }
     <Footer/>
     <NavDown/>
