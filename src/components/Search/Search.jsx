@@ -8,14 +8,14 @@ import Paginate from '../Pagination/Pagination';
 import { Context } from '../../Context/Context';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentPage, selectIndexOfFirstProduct, selectIndexOfLastProduct, selectItemsPerPage, selectTotalItems, setCurrentPage, setTotalItems } from '../../features/paginationSlice';
+import { selectSearch } from '../../features/searchSlice';
 
-const Search = ({search,setSearch}) => {
+const Search = () => {
+  const search=useSelector(selectSearch)
     const products=all_product;
     const dispatch = useDispatch();
     const indexOfFirstProduct=useSelector(selectIndexOfFirstProduct)
     const indexOfLastProduct=useSelector(selectIndexOfLastProduct)
-    const itemsPerPage=useSelector(selectItemsPerPage)
-    const currentPage=useSelector(selectCurrentPage)
     const trimmedSearch = search.trim().toLocaleLowerCase();
     const filteredProducts = products.filter((product) => {
       return trimmedSearch !== "" && product.name.toLocaleLowerCase().includes(trimmedSearch)|| product.category===trimmedSearch;

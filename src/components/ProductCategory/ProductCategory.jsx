@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import all_product from '../assets/all_product';
 import Item from '../Item/Item';
 import BreadCrumb from '../Breadcrumb/Breadcrumb';
@@ -6,17 +7,33 @@ import '../ProductCategory/productCategory.css';
 import NavDown from '../navbar/NavDown';
 import Footer from '../Footer/Footer';
 import Paginate from '../Pagination/Pagination';
-import { Context } from '../../Context/Context';
+import { 
+  setCurrentPage, 
+  setTotalItems,
+  selectItemsPerPage, 
+  selectCurrentPage, 
+  selectIndexOfFirstProduct, 
+  selectIndexOfLastProduct 
+} from '../../features/paginationSlice';
 
-const ProductCategory = (props) => {
-  const productCategoryContext=useContext(Context);
- const {indexOfFirstProduct,indexOfLastProduct,itemsInPage,currentPage,handlePageChange}=productCategoryContext;
-  const products = all_product.filter(product => product.category === props.category);
- const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+const ProductCategory = ({ category, banner }) => {
+  const dispatch = useDispatch();
+  const itemsPerPage = useSelector(selectItemsPerPage);
+  const currentPage = useSelector(selectCurrentPage);
+  const indexOfFirstProduct = useSelector(selectIndexOfFirstProduct);
+  const indexOfLastProduct = useSelector(selectIndexOfLastProduct);
+
+  const products = all_product.filter(product => product.category === category);
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  useEffect(() => {
+    dispatch(setTotalItems(products.length));
+    dispatch(setCurrentPage(1));
+  }, [dispatch, products.length, category]);
 
   return (
     <div>
-      <img src={props.banner} alt="" className="category-banner" />
+      <img src={banner} alt="" className="category-banner" />
       <div className="container justify-content-center p-5">
         <div className="row">
           {currentProducts.map((product) => (
@@ -30,12 +47,7 @@ const ProductCategory = (props) => {
           ))}
         </div>
       </div>
-      <Paginate
-        itemsPerPage={itemsInPage}
-        totalItems={products.length}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      />
+      {products.length > 0 && <Paginate />}
       <Footer />
       <NavDown />
     </div>

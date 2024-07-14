@@ -13,12 +13,13 @@ const cartslice=createSlice({
             state.totalQuantity++;
             if(!existingItem){
                 state.items.push({
-                    id:newItem.id,
-                    name:newItem.name,
-                    price:newItem.price,
-                    totalPrice:newItem.price,
-                    image:newItem.image,
-                    quantity:1
+                    ...newItem,quantity:1,totalPrice:newItem.price
+                    // id:newItem.id,
+                    // name:newItem.name,
+                    // price:newItem.price,
+                    // totalPrice:newItem.price,
+                    // image:newItem.image,
+                    // quantity:1
     
                 })
             }else{

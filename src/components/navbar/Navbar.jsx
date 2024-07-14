@@ -16,23 +16,22 @@ import {
   faShoppingBasket,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectSearch, setSearchQuery } from "../../features/searchSlice";
 
-function HeaderNavbar({ search, setSearch }) {
-  const HeaderContext = useContext(Context);
-  const cartNumber = useSelector(state=>state.cart.totalQuantity);
-  const [show, setShow] = useState(false);
+function HeaderNavbar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch=useDispatch();
+
+  const cartNumber = useSelector(state=>state.cart.totalQuantity);
+  const searchQuery=useSelector(state=>selectSearch);
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [show, setShow] = useState(false);
   const[activeclass, setActiveClass]=useState("home");
 
-  const showDropdown = (e) => {
-    setShow(!show);
-  };
-  const hideDropdown = (e) => {
-    setShow(false);
-  };
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,24 +40,28 @@ function HeaderNavbar({ search, setSearch }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const [searchInput, setSearchInput] = useState("");
 
-  const handleSearchInputChange = (e) => {
-    setSearchInput(e.target.value);
-  };
+  useEffect(()=>{
+    if(location.pathname!== '/search'){
+      dispatch(setSearchQuery(''))
+      setSearchInput('')
+    }
+  },[location,dispatch])
+
+
+
+  const showDropdown = () => setShow(true);
+  const hideDropdown = () => setShow(false);
+
+  const handleSearchInputChange = (e) =>  setSearchInput(e.target.value);
 
   const handleSearchClick = () => {
     if (searchInput.trim()) {
-    setSearch(searchInput);
+      dispatch(setSearchQuery(searchInput))
       navigate(`/search`);
     }
   };
-  useEffect(()=>{
-    if(location.pathname!== '/search'){
-      setSearch('');
-      setSearchInput('')
-    }
-  },[location,setSearch])
+
 
   return (
     <>
