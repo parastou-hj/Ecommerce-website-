@@ -15,15 +15,17 @@ import {
   selectIndexOfFirstProduct, 
   selectIndexOfLastProduct 
 } from '../../features/paginationSlice';
+import { selectAllProducts } from '../../features/productSlice';
 
 const ProductCategory = ({ category, banner }) => {
   const dispatch = useDispatch();
+  const allProducts=useSelector(selectAllProducts)
   const itemsPerPage = useSelector(selectItemsPerPage);
   const currentPage = useSelector(selectCurrentPage);
   const indexOfFirstProduct = useSelector(selectIndexOfFirstProduct);
   const indexOfLastProduct = useSelector(selectIndexOfLastProduct);
 
-  const products = all_product.filter(product => product.category === category);
+  const products = allProducts.filter(product => product.category === category);
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
   useEffect(() => {

@@ -140,13 +140,16 @@ function HeaderNavbar() {
                 className={`menu ${activeclass==='products'?"activeclass": ''} `}
               >
                 <NavDropdown.Item>
-                  <Link to="/women" onClick={()=>setActiveClass('products')}>women</Link>
+                  <Link to="/women" onClick={()=>setActiveClass('products')}>Women</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/men"  onClick={()=>setActiveClass('products')}>men</Link>
+                  <Link to="/men"  onClick={()=>setActiveClass('products')}>Men</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/kid"  onClick={()=>setActiveClass('products')}>kids</Link>
+                  <Link to="/kid"  onClick={()=>setActiveClass('products')}>Kids</Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/other"  onClick={()=>setActiveClass('products')}>All Products</Link>
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link as={NavLink} to="/magazin" onClick={()=>setActiveClass('magazin')}  className={`menu-list ${activeclass==='magazin'?"activeclass": ''} `}>

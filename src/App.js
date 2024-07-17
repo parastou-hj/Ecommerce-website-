@@ -9,7 +9,7 @@ import ProductCategory from "./components/ProductCategory/ProductCategory";
 import banner_women from "./components/assets/banner_women.png";
 import banner_mens from "./components/assets/banner_mens.png";
 import banner_kids from "./components/assets/banner_kids.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Context } from "./Context/Context";
 import Cart from "./components/Cart/Cart";
 import Login from "./components/Login/Login";
@@ -18,10 +18,15 @@ import Magazin from "./components/Magazin/Magazin";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import Search from "./components/Search/Search";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { getProducts,setError } from "./features/productSlice";
+import FetchProducts from "./components/Product/FetchProducts";
+import FetchedProducts from "./components/Product/FetchProducts";
 
 function App() {
-
   const [search, setSearch] = useState("");
+ 
   
   return (
   
@@ -45,6 +50,15 @@ function App() {
               path="/kid"
               element={<ProductCategory category="kid" banner={banner_kids} />}
             />
+            <Route
+              path="/jewelery"
+              element={<ProductCategory category="jewelery" />}
+            />
+            <Route
+              path="/electronics"
+              element={<ProductCategory category="electronics" />}
+            />
+            <Route path="/other" element={<FetchedProducts/>}/>
             <Route path="/product" element={<Product />}>
               <Route path="/product:productId" element={<Product />} />
             </Route>

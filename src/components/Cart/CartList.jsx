@@ -25,7 +25,7 @@ const handeleAdd=()=>{
           <Link to={`/product/${item.id}`}>
             <img className="p-image" src={item.image} />
           </Link>
-          <span className="p-2 mt-5">{item.name}</span>
+          <span className="p-2 mt-5">{item.name||item.title}</span>
         </div>
         <div className="num-price">
           <div className="num ">

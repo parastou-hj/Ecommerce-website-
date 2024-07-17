@@ -2,10 +2,13 @@ import React from 'react'
 import data from '../assets/data'
 import Item from '../Item/Item';
 import '../Popular/popular.css'
+import { useSelector } from 'react-redux';
+import { selectAllProducts } from '../../features/productSlice';
 
 
 const Popular = () => {
   const product= data;
+  console.log(product)
   return (
     <div className='popular d-flex flex-column align-items-center pt-5'>
       <h1>most popular</h1>
@@ -14,7 +17,7 @@ const Popular = () => {
       <div className="row">
       {product.map((i)=>{
         return(<>
-        <Item key={i.id} product={product} id={i.id} name={i.name} image={i.image} price={i.price} />
+        <Item key={i.id} id={i.id} name={i.name} image={i.image} price={i.price} />
         </>)
 
       })}

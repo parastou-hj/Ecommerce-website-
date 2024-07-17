@@ -9,6 +9,7 @@ import NavDown from "../navbar/NavDown";
 import { addToCart, removeFromCart } from "../../features/cartSlice";
 
 const ProductDisplay = ({ product }) => {
+
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
   const addedToCart = cartItems.find((item) => item.id === product.id);
@@ -38,14 +39,14 @@ const ProductDisplay = ({ product }) => {
             </div>
           </div>
           <div className="col-lg-7 col-sm-12 description py-2">
-            <h1>{product.name}</h1>
+            <h1>{product.title}</h1>
             <div className="stars">
               <img src={star_icon} alt="" />
               <img src={star_icon} alt="" />
               <img src={star_icon} alt="" />
               <img src={star_icon} alt="" />
               <img src={star_dull_icon} alt="" />
-              <p>(122)</p>
+              <p>{}</p>
             </div>
             <div className="product-prices">
               <div className="old-price">{product.old_price}</div>
@@ -53,10 +54,7 @@ const ProductDisplay = ({ product }) => {
             </div>
             <div className="product-description">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-                voluptas, laboriosam delectus dicta assumenda officia minus
-                soluta nam nulla. Culpa quisquam earum magnam iusto nam dicta
-                soluta inventore, assumenda quas?
+            { product.description}
               </p>
             </div>
             <div className="product-size">

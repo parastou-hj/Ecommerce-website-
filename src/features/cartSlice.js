@@ -44,7 +44,8 @@ const cartslice=createSlice({
 
             }
         }
-    }
+    },
+    
 })
 
 export const {addToCart,removeFromCart}=cartslice.actions;
