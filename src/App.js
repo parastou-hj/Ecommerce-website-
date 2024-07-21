@@ -18,33 +18,16 @@ import Magazin from "./components/Magazin/Magazin";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import Search from "./components/Search/Search";
-import User from "./components/user/User";
-import { useSelector } from "react-redux";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import FetchedProducts from "./components/Product/FetchProducts";
 
 function App() {
-  const [cartItems, setCartItem] = useState([]);
-  const [cartItemsNumber, setItemNumer] = useState(0);
   const [search, setSearch] = useState("");
-  const itemsPerPage = 20;
-  const [currentPage, setCurrentPage] = useState(1);
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
  
   
-  const indexOfLastProduct = currentPage * itemsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
   return (
-    <Context.Provider
-      value={{
-       itemsInPage:itemsPerPage,
-       indexOfFirstProduct:indexOfFirstProduct,
-       indexOfLastProduct:indexOfLastProduct,
-       handlePageChange:handlePageChange,
-       currentPage:currentPage
-
-      }}
-    >
+  
       <div className="App">
         <BrowserRouter>
           <HeaderNavbar setSearch={setSearch} search={search} />
@@ -65,6 +48,15 @@ function App() {
               path="/kid"
               element={<ProductCategory category="kid" banner={banner_kids} />}
             />
+            <Route
+              path="/jewelery"
+              element={<ProductCategory category="jewelery" />}
+            />
+            <Route
+              path="/electronics"
+              element={<ProductCategory category="electronics" />}
+            />
+            <Route path="/other" element={<FetchedProducts/>}/>
             <Route path="/product" element={<Product />}>
               <Route path="/product:productId" element={<Product />} />
             </Route>
@@ -74,7 +66,6 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/user" element={<User/>}/>
             <Route
               path="/search"
               element={<Search setSearch={setSearch} search={search} />}
@@ -82,7 +73,6 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
-    </Context.Provider>
   );
  
 }

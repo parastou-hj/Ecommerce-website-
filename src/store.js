@@ -1,12 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from './features/userSlice';
 import cartReducer from './features/cartSlice'
+import paginationReducer from './features/paginationSlice'
+import seachReducer from './features/searchSlice'
+import productReducer from './features/productSlice'
 
 const store=configureStore({
     reducer:{
-        user:userReducer,
-        cart:cartReducer
+        cart:cartReducer,
+        pagination:paginationReducer,
+        search:seachReducer,
+        products:productReducer
     }
-    
 })
 export default store;

@@ -13,9 +13,9 @@ import NavDown from "../navbar/NavDown";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const cartItems = useSelector(state => state.cart.items);
-  const cartItemsNumber = useSelector(state => state.cart.totalQuantity);
-  
+  const CartContext = useContext(Context);
+  const cartItems =useSelector(state=>state.cart.items);
+  const cartItemsNumber = useSelector(state=>state.cart.totalQuantity);
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0

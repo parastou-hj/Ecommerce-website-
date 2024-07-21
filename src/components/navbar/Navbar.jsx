@@ -16,28 +16,22 @@ import {
   faShoppingBasket,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import { selectCartItemsCount } from "../../features/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserLogin, selectUserName } from "../../features/userSlice";
+import { selectSearch, setSearchQuery } from "../../features/searchSlice";
 
-function HeaderNavbar({ search, setSearch }) {
-  const HeaderContext = useContext(Context);
-  const cartNumber = useSelector(selectCartItemsCount);
-  const [show, setShow] = useState(false);
+function HeaderNavbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const dispatch=useDispatch()
-  const[activeclass, setActiveClass]=useState("home");
-  const auth = useSelector(selectUserLogin);
-  const username = useSelector(selectUserName);
+  const dispatch=useDispatch();
 
-  const showDropdown = (e) => {
-    setShow(!show);
-  };
-  const hideDropdown = (e) => {
-    setShow(false);
-  };
+  const cartNumber = useSelector(state=>state.cart.totalQuantity);
+  const searchQuery=useSelector(state=>selectSearch);
+
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [show, setShow] = useState(false);
+  const[activeclass, setActiveClass]=useState("home");
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,24 +40,28 @@ function HeaderNavbar({ search, setSearch }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const [searchInput, setSearchInput] = useState("");
 
-  const handleSearchInputChange = (e) => {
-    setSearchInput(e.target.value);
-  };
+  useEffect(()=>{
+    if(location.pathname!== '/search'){
+      dispatch(setSearchQuery(''))
+      setSearchInput('')
+    }
+  },[location,dispatch])
+
+
+
+  const showDropdown = () => setShow(true);
+  const hideDropdown = () => setShow(false);
+
+  const handleSearchInputChange = (e) =>  setSearchInput(e.target.value);
 
   const handleSearchClick = () => {
     if (searchInput.trim()) {
-    setSearch(searchInput);
+      dispatch(setSearchQuery(searchInput))
       navigate(`/search`);
     }
   };
-  useEffect(()=>{
-    if(location.pathname!== '/search'){
-      setSearch('');
-      setSearchInput('')
-    }
-  },[location,setSearch])
+
 
   return (
     <>
@@ -97,9 +95,9 @@ function HeaderNavbar({ search, setSearch }) {
         </div>
         <div className="signin-cart d-flex">
           <div className="account">
-          <Link to={!auth?"/login":'/user'}>
+          <Link to="login">
               <FontAwesomeIcon icon={faRightToBracket} size="lg" />
-        {username===''? <span className="">Login | Signup</span>:username}
+        <span className="">Login | Signup</span>
             </Link>
           </div>
           
@@ -142,13 +140,16 @@ function HeaderNavbar({ search, setSearch }) {
                 className={`menu ${activeclass==='products'?"activeclass": ''} `}
               >
                 <NavDropdown.Item>
-                  <Link to="/women" onClick={()=>setActiveClass('products')}>women</Link>
+                  <Link to="/women" onClick={()=>setActiveClass('products')}>Women</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/men"  onClick={()=>setActiveClass('products')}>men</Link>
+                  <Link to="/men"  onClick={()=>setActiveClass('products')}>Men</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/kid"  onClick={()=>setActiveClass('products')}>kids</Link>
+                  <Link to="/kid"  onClick={()=>setActiveClass('products')}>Kids</Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/other"  onClick={()=>setActiveClass('products')}>All Products</Link>
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link as={NavLink} to="/magazin" onClick={()=>setActiveClass('magazin')}  className={`menu-list ${activeclass==='magazin'?"activeclass": ''} `}>
