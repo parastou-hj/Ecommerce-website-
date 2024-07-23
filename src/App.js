@@ -21,6 +21,7 @@ import Search from "./components/Search/Search";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import FetchedProducts from "./components/Product/FetchProducts";
+import User from "./components/user/User";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -66,6 +67,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/user" element={<User />} />
             <Route
               path="/search"
               element={<Search setSearch={setSearch} search={search} />}

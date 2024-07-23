@@ -11,9 +11,11 @@ import {
 import { Context } from "../../Context/Context";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../features/userSlice";
 const NavDown = () => {
   const NavContext = useContext(Context);
   const cartNumber = useSelector(state=>state.cart.totalQuantity);
+  const user=useSelector(selectCurrentUser)
 
 
   return (
@@ -45,9 +47,10 @@ const NavDown = () => {
           </div>
           <span>Basket</span>
         </Link>
-        <Link to="/login" className="col  nav-down-item">
+        <Link to={user.username!==''?'/user':'/login'} className="col  nav-down-item">
           <FontAwesomeIcon icon={faUser} />
-          <span>Account</span>
+          {user.username!==''?user.username :<span className="">Account</span>}
+
         </Link>
       </div>
     </div>

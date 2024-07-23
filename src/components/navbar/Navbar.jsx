@@ -18,6 +18,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSearch, setSearchQuery } from "../../features/searchSlice";
+import { selectCurrentUser } from "../../features/userSlice";
 
 function HeaderNavbar() {
   const navigate = useNavigate();
@@ -26,6 +27,9 @@ function HeaderNavbar() {
 
   const cartNumber = useSelector(state=>state.cart.totalQuantity);
   const searchQuery=useSelector(state=>selectSearch);
+  const user=useSelector(selectCurrentUser);
+
+  console.log(user)
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -95,9 +99,9 @@ function HeaderNavbar() {
         </div>
         <div className="signin-cart d-flex">
           <div className="account">
-          <Link to="login">
+          <Link to={user.username!==''?'/user':'/login'}>
               <FontAwesomeIcon icon={faRightToBracket} size="lg" />
-        <span className="">Login | Signup</span>
+       {user.username!==''?user.username :<span className="">Login | Signup</span>}
             </Link>
           </div>
           

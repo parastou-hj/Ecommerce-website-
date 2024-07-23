@@ -1,38 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import './CountdownTimer.css';
 
-const CountdownTimer = ({ initialHours = 0, initialMinutes = 0, initialSeconds = 0 }) => {
-  const [hours, setHours] = useState(initialHours);
-  const [minutes, setMinutes] = useState(initialMinutes);
-  const [seconds, setSeconds] = useState(initialSeconds);
+const CountdownTimer = ({ 
+  initialHours = 0, 
+  initialMinutes = 0, 
+  initialSeconds = 0,
+  onTimerEnd
+}) => {
+  const [time, setTime] = useState({
+    hours: initialHours,
+    minutes: initialMinutes,
+    seconds: initialSeconds
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (seconds > 0) {
-        setSeconds(seconds - 1);
-      } else if (seconds === 0) {
-        if (minutes > 0) {
-          setMinutes(minutes - 1);
-          setSeconds(59);
-        } else if (minutes === 0) {
-          if (hours > 0) {
-            setHours(hours - 1);
-            setMinutes(59);
-            setSeconds(59);
-          } else {
-            clearInterval(interval);
+      setTime(prevTime => {
+        if (prevTime.hours === 0 && prevTime.minutes === 0 && prevTime.seconds === 0) {
+          clearInterval(interval);
+          if (onTimerEnd) {
+            onTimerEnd();
           }
+          return prevTime;
         }
-      }
+
+        let newSeconds = prevTime.seconds - 1;
+        let newMinutes = prevTime.minutes;
+        let newHours = prevTime.hours;
+
+        if (newSeconds < 0) {
+          newSeconds = 59;
+          newMinutes -= 1;
+        }
+
+        if (newMinutes < 0) {
+          newMinutes = 59;
+          newHours -= 1;
+        }
+
+        return { hours: newHours, minutes: newMinutes, seconds: newSeconds };
+      });
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [hours, minutes, seconds]);
+  }, [onTimerEnd]);
+
+  const formatTime = (time) => time < 10 ? `0${time}` : time;
 
   return (
     <div className="timer">
       <div>
-        <span>{hours}</span>:<span>{minutes < 10 ? `0${minutes}` : minutes}</span>:<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+        <span>{formatTime(time.hours)}</span>:
+        <span>{formatTime(time.minutes)}</span>:
+        <span>{formatTime(time.seconds)}</span>
       </div>
     </div>
   );
