@@ -8,7 +8,6 @@ import { selectAllProducts } from '../../features/productSlice';
 
 const Popular = () => {
   const product= data;
-  console.log(product)
   return (
     <div className='popular d-flex flex-column align-items-center pt-5'>
       <h1>most popular</h1>

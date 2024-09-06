@@ -29,7 +29,6 @@ function HeaderNavbar() {
   const searchQuery=useSelector(state=>selectSearch);
   const user=useSelector(selectCurrentUser);
 
-  console.log(user)
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchInput, setSearchInput] = useState("");

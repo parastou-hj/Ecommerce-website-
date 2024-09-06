@@ -9,7 +9,6 @@ const Product = () => {
   const products=useSelector(selectAllProducts)
     const id= useParams();
     const productItem=products.find((i)=> i.id===Number(id.productId));
-    console.log(productItem)
   return (
     <div>
      <ProductDisplay product={productItem} />

@@ -7,7 +7,6 @@ const User = () => {
     const userInfo = useSelector(selectCurrentUser);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    console.log(userInfo)
 
     const handleLogout = () => {
         navigate('/login');
